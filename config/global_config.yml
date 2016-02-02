@@ -1,0 +1,20 @@
+# :::::::::::::::::
+# App Settings
+# :::::::::::::::::
+
+# Default domain name to be used
+app_name										: 'Backchat'
+app_domain									: 'backchat.cfapps.io'
+
+# :::::::::::::::::
+# Slack Settings
+# :::::::::::::::::
+
+# Use Slack Notification for supprt and tracking
+use_slack 									: false
+# Slack Team name
+slack_team 									: 'team-name'
+# Default Icon for Slack Sending Messages
+slack_icon_url							: 'https://github.com/apple-touch-icon-144.png'
+# Default Slack User to send natifications as
+slack_user									: 'Rails Bot'
