@@ -6,10 +6,16 @@ class CreateOutputs < ActiveRecord::Migration
   end
   def change
     create_table :outputs, id: :uuid, default: 'gen_random_uuid()' do |t|
+      t.string :name, required: true
       t.jsonb 'configuration'
-      t.string :type
+      t.string :type,  required: true
+      t.references :owner, class_name: "User", index: true, required: true
+      t.references :form, index: true, required: true
     end
-    add_reference :outputs, :form, type: :uuid, index: true, foreign_key: true
+
+    create_join_table :forms, :outputs, table_name: 'form_outputs' do |t|
+    end
+
     create_join_table :outputs, :submissions, table_name: 'output_jobs' do |t|
       t.boolean 'success'
       t.jsonb 'result'

@@ -46,6 +46,7 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    cancancan (1.13.1)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -352,6 +353,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootstrap-sass (~> 3.3.0)
+  cancancan
   capistrano (~> 3.4.0)
   capybara (~> 2.5.0)
   coffee-rails (~> 4.1.0)

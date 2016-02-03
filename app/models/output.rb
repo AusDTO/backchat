@@ -1,5 +1,6 @@
 class Output < ActiveRecord::Base
-belongs_to :form
+has_many :forms
+belongs_to :user
 end
 
 class ZenDeskOutput < Output

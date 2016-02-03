@@ -16,20 +16,18 @@
 	      <div class="masthead clearfix">
 	        <div class="inner">
 	          <h3 class="masthead-brand"><%= APP_CONFIG["app_name"] %></h3>
-	          <nav>
+	          <!--<nav>
 	            <ul class="nav masthead-nav">
 	              <li class="active"><a href="#">Home</a></li>
-	              <li><a href="#">Features</a></li>
-	              <li><a href="https://twitter.com/TristanToye" target="_blank">Contact</a></li>
+	              <li><a href="#">About</a></li>
 	            </ul>
-	          </nav>
+	          </nav>-->
 	        </div>
 	      </div>
 
 	      <div class="inner cover">
-	        <h1 class="cover-heading">Rails 4 Boilerplate demo.</h1>
-	        <p class="lead">The homepage for this demo can be found here: <a href="https://github.com/TristanToye/rails-4-boilerplate" target="_blank" title="GitHub Repo">https://github.com/TristanToye/rails-4-boilerplate</a></p>
-	        <p class="lead">
+	        <h1 class="cover-heading">Welcome</h1>
+	        <p class="lead">Backchat is a unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.<p class="lead">
 	          <% if !current_user %>
 	          	<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %> <%= link_to "Sign In", new_user_session_path, class: "btn btn-default" %>
 						<% else %>
@@ -45,7 +43,7 @@
 
 	      <div class="mastfoot">
 	        <div class="inner">
-	          <p><a href="#">Support</a></p>
+	          <large><a href="https://github.com/AusDTO/backchat"><i class="fa fa-github"></i></a></large>
 	        </div>
 	      </div>
 

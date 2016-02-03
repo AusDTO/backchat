@@ -11,16 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202034021) do
+ActiveRecord::Schema.define(version: 20160202221546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
 
-  create_table "forms", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.string "website"
-    t.jsonb  "input_fields"
+  create_table "form_outputs", id: false, force: :cascade do |t|
+    t.integer "form_id",   null: false
+    t.integer "output_id", null: false
   end
+
+  create_table "forms", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.string  "name"
+    t.string  "website"
+    t.jsonb   "input_fields"
+    t.integer "owner_id"
+  end
+
+  add_index "forms", ["owner_id"], name: "index_forms_on_owner_id", using: :btree
 
   create_table "global_configs", force: :cascade do |t|
     t.string   "app_name"
@@ -56,12 +65,26 @@ ActiveRecord::Schema.define(version: 20160202034021) do
   end
 
   create_table "outputs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
-    t.jsonb  "configuration"
-    t.string "type"
-    t.uuid   "form_id"
+    t.string  "name"
+    t.jsonb   "configuration"
+    t.string  "type"
+    t.integer "user_id"
+    t.integer "form_id"
   end
 
   add_index "outputs", ["form_id"], name: "index_outputs_on_form_id", using: :btree
+  add_index "outputs", ["user_id"], name: "index_outputs_on_user_id", using: :btree
+
+  create_table "que_jobs", id: false, force: :cascade do |t|
+    t.integer  "priority",    limit: 2, default: 100,                                        null: false
+    t.datetime "run_at",                default: "now()",                                    null: false
+    t.integer  "job_id",      limit: 8, default: "nextval('que_jobs_job_id_seq'::regclass)", null: false
+    t.text     "job_class",                                                                  null: false
+    t.json     "args",                  default: [],                                         null: false
+    t.integer  "error_count",           default: 0,                                          null: false
+    t.text     "last_error"
+    t.text     "queue",                 default: "",                                         null: false
+  end
 
   create_table "submissions", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.datetime "created_at"
@@ -101,5 +124,4 @@ ActiveRecord::Schema.define(version: 20160202034021) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "outputs", "forms"
 end

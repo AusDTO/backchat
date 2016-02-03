@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :forms
+  has_many :outputs
 
 	# Define what an email should look like
 	TEMP_EMAIL_PREFIX = 'change@me'
@@ -7,7 +9,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable, :confirmable
   devise :database_authenticatable, :registerable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
+         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google]
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

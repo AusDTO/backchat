@@ -9,7 +9,7 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  # config.authorize_with :cancan
+  config.authorize_with :cancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -23,12 +23,12 @@ RailsAdmin.config do |config|
     dashboard                     # mandatory
     index                         # mandatory
     new
-    export
-    bulk_delete
+    #export
+    #bulk_delete
     show
     edit
     delete
-    show_in_app
+    #show_in_app
 
     ## With an audit adapter, you can add:
     # history_index

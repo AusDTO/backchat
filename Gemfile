@@ -43,6 +43,8 @@ gem "omniauth-google-oauth2"
 #gem 'omniauth-facebook'
 # Linkedin for omniauth
 #gem 'omniauth-linkedin'
+# Access control
+gem "cancancan"
 
 # =======================
 # ADMIN
