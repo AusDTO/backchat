@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 	TEMP_EMAIL_REGEX = /\Achange@me/
 
   # Include default devise modules. Others available are:
-  #  :lockable, :timeoutable
-  devise :database_authenticatable, :registerable, :confirmable, :omniauthable,
+  #  :lockable, :timeoutable, :confirmable
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google_oauth2]
 
   def self.find_for_oauth(auth, signed_in_resource = nil)

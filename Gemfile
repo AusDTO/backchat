@@ -75,6 +75,14 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'roadie-rails'
 
 # =======================
+# JOB QUEUE GEMS
+# =======================
+# Uses PostgreSQL "advisory locks" for maximum reliability
+# https://github.com/chanks/que/blob/master/docs/writing_reliable_jobs.md
+gem 'que'
+
+
+# =======================
 # TESTING
 # =======================
 

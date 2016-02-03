@@ -216,6 +216,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    que (0.11.2)
     rack (1.6.4)
     rack-livereload (0.3.16)
       rack
@@ -368,6 +369,7 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   pg
+  que
   rack-livereload (~> 0.3.16)
   rails (= 4.2.5)
   rails_12factor

@@ -13,8 +13,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.binary 'file'
       t.string 'file_type'
       t.jsonb 'content'
-
+      t.belongs_to :form, type: :uuid, index: true
     end
-    add_reference :submissions ,:form, type: :uuid, index: true, foreign_key: true
   end
 end

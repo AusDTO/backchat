@@ -9,5 +9,6 @@ Produce stats eg. number responses/average satisfaction per page and total
 '''
 
 class Form < ActiveRecord::Base
-
+  has_many :submissions
+  has_many :outputs
 end
