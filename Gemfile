@@ -52,6 +52,8 @@ gem "cancancan"
 
 # Core Admin Panel
 gem 'rails_admin', '~> 0.8.0'
+# Custom field for user/owner fields
+#gem 'rails_admin_userfield', :path => './lib/rails_admin_userfield'
 # Slack Support For Notifications
 gem 'slack-poster'
 
@@ -93,6 +95,8 @@ group :development, :test do
   gem "rspec-rails", "~> 3.4.0"
   # Fixtures replacement
   gem "factory_girl_rails", "~> 4.5.0"
+  # Make sure seeds only run in development
+  gem "seedbank"
 end
 
 group :test do

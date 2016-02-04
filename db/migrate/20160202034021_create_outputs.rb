@@ -13,9 +13,6 @@ class CreateOutputs < ActiveRecord::Migration
       t.references :form, index: true, required: true
     end
 
-    create_join_table :forms, :outputs, table_name: 'form_outputs' do |t|
-    end
-
     create_join_table :outputs, :submissions, table_name: 'output_jobs' do |t|
       t.boolean 'success'
       t.jsonb 'result'

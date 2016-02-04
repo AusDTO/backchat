@@ -1,6 +1,12 @@
 # Backchat
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
+## TODO
+- [ ]  Have input fields with types including restrictions on uploaded files
+- [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
+- [ ]  Have thank-you url
+- [ ]  Produce stats eg. number responses/average satisfaction per page and total
+
 ## Lifecycle of a submission
 Submission is received as HTTP POST form or JSON, user sent back to thankyou
 Validated; does it match a form uuid, do the fields validate

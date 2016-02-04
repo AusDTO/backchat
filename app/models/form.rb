@@ -1,15 +1,47 @@
-''' Forms
-Have uuid
-Have property/website
-Have input fields with types including restrictions on uploaded files
-Have outputs, email, zendesk, Google sheet
-- api authorisation tokens and other configuration/templates
-Have thank-you url
-Produce stats eg. number responses/average satisfaction per page and total
-'''
-
 class Form < ActiveRecord::Base
+  belongs_to :user
   has_many :submissions
   has_many :outputs
-  belongs_to :user
+  rails_admin do
+    # https://github.com/sferik/rails_admin/wiki/Fields
+    edit do
+      group :default do
+        label "Form information"
+        help "Please fill all information related to your form..."
+        field :name do
+          label "Title"
+        end
+        field :website do
+          label "Website/Property"
+        end
+        field :outputs do
+          label "Outputs"
+        end
+        # you need to tell RailsAdmin that you want to use an `:enum` field
+        field :owner_id, :enum do
+
+          # if you need select the default value
+          default_value do
+            bindings[:view]._current_user.id
+          end
+
+          enum do
+            if bindings[:view]._current_user.admin
+              User.all.map { |c| [c.name, c.id] }
+            else
+              uid = bindings[:view]._current_user.id
+              User.where('id = ?', uid).map { |c| [c.name, c.id] }
+            end
+          end
+
+        end
+      end
+    end
+    list do
+      configure :submissions do
+        hide
+      end
+    end
+
+  end
 end

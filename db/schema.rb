@@ -17,11 +17,6 @@ ActiveRecord::Schema.define(version: 20160202221546) do
   enable_extension "plpgsql"
   enable_extension "pgcrypto"
 
-  create_table "form_outputs", id: false, force: :cascade do |t|
-    t.integer "form_id",   null: false
-    t.integer "output_id", null: false
-  end
-
   create_table "forms", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string  "name"
     t.string  "website"
@@ -68,12 +63,12 @@ ActiveRecord::Schema.define(version: 20160202221546) do
     t.string  "name"
     t.jsonb   "configuration"
     t.string  "type"
-    t.integer "user_id"
+    t.integer "owner_id"
     t.integer "form_id"
   end
 
   add_index "outputs", ["form_id"], name: "index_outputs_on_form_id", using: :btree
-  add_index "outputs", ["user_id"], name: "index_outputs_on_user_id", using: :btree
+  add_index "outputs", ["owner_id"], name: "index_outputs_on_owner_id", using: :btree
 
   create_table "que_jobs", id: false, force: :cascade do |t|
     t.integer  "priority",    limit: 2, default: 100,                                        null: false
