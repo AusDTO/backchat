@@ -37,23 +37,8 @@ gem 'omniauth'
 # https://developers.google.com/api-client-library/ruby/auth/web-app#offline
 gem 'google-api-client'
 gem "omniauth-google-oauth2"
-# Twitter for omniauth
-#gem 'omniauth-twitter'
-# Facebook for omniauth
-#gem 'omniauth-facebook'
-# Linkedin for omniauth
-#gem 'omniauth-linkedin'
 # Access control
 gem "cancancan"
-
-# =======================
-# ADMIN
-# =======================
-
-# Core Admin Panel
-gem 'rails_admin', '~> 0.8.0'
-# Custom field for user/owner fields
-#gem 'rails_admin_userfield', :path => './lib/rails_admin_userfield'
 # Slack Support For Notifications
 gem 'slack-poster'
 
@@ -77,6 +62,11 @@ gem 'uglifier', '~> 2.7.0'
 gem 'coffee-rails', '~> 4.1.0'
 # Compress css to inline styles for HTML emails
 gem 'roadie-rails'
+# form generator
+gem 'formtastic', '~> 3.0'
+# file attachment
+gem "refile", require: "refile/rails"
+gem 'refile-postgres'
 
 # =======================
 # JOB QUEUE GEMS
@@ -89,7 +79,10 @@ gem 'que'
 # =======================
 # TESTING
 # =======================
-
+group :development do
+  # better error page
+  gem "better_errors"
+end
 group :development, :test do
 	# Test Framework we are using
   gem "rspec-rails", "~> 3.4.0"

@@ -10,7 +10,7 @@ app_domain									: 'backchat.cfapps.io'
 # Slack Settings
 # :::::::::::::::::
 
-# Use Slack Notification for supprt and tracking
+# Use Slack Notification for support and tracking
 use_slack 									: false
 # Slack Team name
 slack_team 									: 'team-name'

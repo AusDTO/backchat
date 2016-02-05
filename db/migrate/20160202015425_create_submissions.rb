@@ -10,8 +10,7 @@ class CreateSubmissions < ActiveRecord::Migration
       t.timestamps
       t.string 'path'
       t.decimal 'satisfaction', precision: 3, scale: 0
-      t.binary 'file'
-      t.string 'file_type'
+      t.string 'file_id'
       t.jsonb 'content', required: true
       t.references :form, type: :uuid, index: true, required: true
     end
