@@ -5,7 +5,8 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 - [ ]  Have input fields with types including restrictions on uploaded files
 - [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
 - [ ]  Have thank-you url
-- [ ]  Produce stats eg. number responses/average satisfaction per page and total
+- [ ]  Produce stats via API eg. number responses/average satisfaction per page and total
+- [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. feedback recieved, feedback output jobs success/fail, by outputtype?
 
 ## Lifecycle of a submission
 Submission is received as HTTP POST form or JSON, user sent back to thankyou

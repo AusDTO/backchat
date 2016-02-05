@@ -118,6 +118,10 @@ end
 # =======================
 
 gem 'capistrano', '~> 3.4.0'
+# high performance http rack server
+gem 'puma'
+# analytics
+gem 'prometheus-client'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT

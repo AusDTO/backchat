@@ -213,10 +213,14 @@ GEM
     orm_adapter (0.5.0)
     os (0.9.6)
     pg (0.18.4)
+    prometheus-client (0.5.0)
+      quantile (~> 0.2.0)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.16.0)
+    quantile (0.2.0)
     que (0.11.2)
     rack (1.6.4)
     rack-livereload (0.3.16)
@@ -372,6 +376,8 @@ DEPENDENCIES
   omniauth
   omniauth-google-oauth2
   pg
+  prometheus-client
+  puma
   que
   rack-livereload (~> 0.3.16)
   rails (= 4.2.5)
