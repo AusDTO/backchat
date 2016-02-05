@@ -16,6 +16,7 @@ class Form < ActiveRecord::Base
         end
         field :outputs do
           label "Outputs"
+          help "Outputs enabled for use with this form"
         end
         # you need to tell RailsAdmin that you want to use an `:enum` field
         field :owner_id, :enum do

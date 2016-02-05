@@ -11,6 +11,7 @@ class Ability
         # https://github.com/sferik/rails_admin/wiki/How-to-set-current_user-to-the-field
         can :create, [Form, Output], owner_id: user.id if user
         can :manage, [Form, Output], :owner_id => user.id
+        can :read, OutputJob, :form => { :owner_id => user.id }
         can :read, Submission, :form => { :owner_id => user.id }
       end
     end

@@ -50,14 +50,17 @@ ActiveRecord::Schema.define(version: 20160202221546) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "output_jobs", id: false, force: :cascade do |t|
-    t.integer  "output_id",     null: false
-    t.integer  "submission_id", null: false
+  create_table "output_jobs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
+    t.uuid     "output_id"
+    t.uuid     "submission_id"
     t.boolean  "success"
     t.jsonb    "result"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "output_jobs", ["output_id"], name: "index_output_jobs_on_output_id", using: :btree
+  add_index "output_jobs", ["submission_id"], name: "index_output_jobs_on_submission_id", using: :btree
 
   create_table "outputs", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.string  "name"
