@@ -1,5 +1,27 @@
 Rails.application.routes.draw do
 
+  get 'submission/show'
+
+  get 'submission/submit'
+
+  get 'output_job/edit'
+
+  get 'output_job/show'
+
+  get 'output_job/new'
+
+  get 'output/edit'
+
+  get 'output/show'
+
+  get 'output/new'
+
+  get 'form/edit'
+
+  get 'form/show'
+
+  get 'form/new'
+
   # =======================
   # GENERAL
   # =======================

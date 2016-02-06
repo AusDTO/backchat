@@ -11,8 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Admin Panel', rails_admin_path if current_user.is_admin? %> </li>
-        
+
         <!-- User actions in dropdown -->
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="http://www.gravatar.com/avatar/<%= @email_hash %>?s=23" title="Gravatar" class="gravatar"> <%= current_user.email %><span class="caret"></span></a>
