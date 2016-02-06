@@ -1,11 +1,7 @@
 
 class CreateSubmissions < ActiveRecord::Migration
-  def up
-    execute <<-SQL
-      CREATE extension IF NOT EXISTS pgcrypto;
-    SQL
-  end
   def change
+    enable_extension 'pgcrypto'
     create_table :submissions, id: :uuid, default: 'gen_random_uuid()' do |t|
       t.timestamps
       t.string 'path'

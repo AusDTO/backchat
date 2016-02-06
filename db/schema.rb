@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160202221546) do
+ActiveRecord::Schema.define(version: 20160202034021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,13 +84,18 @@ ActiveRecord::Schema.define(version: 20160202221546) do
     t.text     "queue",                 default: "",                                         null: false
   end
 
+  create_table "refile_attachments", force: :cascade do |t|
+    t.string "namespace", null: false
+  end
+
+  add_index "refile_attachments", ["namespace"], name: "index_refile_attachments_on_namespace", using: :btree
+
   create_table "submissions", id: :uuid, default: "gen_random_uuid()", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "path"
     t.decimal  "satisfaction", precision: 3
-    t.binary   "file"
-    t.string   "file_type"
+    t.string   "file_id"
     t.jsonb    "content"
     t.uuid     "form_id"
   end

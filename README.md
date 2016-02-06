@@ -40,18 +40,16 @@ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 # logs etc. in /usr/local/var/postgres/
 createdb backchat_development
-echo "CREATE extension IF NOT EXISTS pgcrypto;" | psql -d backchat_development
 #install deps
 bundle install
 
-# setup db
+# setup db with seed data
+bin/rake db:create
 bin/rake db:setup
-# rebuild db
+
+# rebuild db with seed data
 bin/rake db:drop
 bin/rake db:create
-echo "CREATE extension IF NOT EXISTS pgcrypto;" | psql -d backchat_development
 bin/rake db:migrate
 bin/rake db:setup
-# create admin + user
-bin/rake db:seed
 ```
