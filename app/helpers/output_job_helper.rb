@@ -1,0 +1,2 @@
+module OutputJobHelper
+end

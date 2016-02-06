@@ -2,8 +2,6 @@ class Ability
   include CanCan::Ability
   def initialize(user)
     if user
-      can :access, :rails_admin       # allow all users to access Rails Admin
-      can :dashboard                  # allow access to dashboard
       if user.admin?
         can :manage, :all             # allow admins to do anything
       else
@@ -13,7 +11,10 @@ class Ability
         can :manage, [Form, Output], :owner_id => user.id
         can :read, OutputJob, :form => { :owner_id => user.id }
         can :read, Submission, :form => { :owner_id => user.id }
+        can :manage, User, :id => user.id
       end
+    else
+      can :create, Submission
     end
   end
 end

@@ -4,22 +4,22 @@ class UsersController < ApplicationController
 
   # After login go here
   def index
-
+    @forms = Form.all
   end
 
   # GET /users/:id.:format
   def show
-    # authorize! :read, @user
+    authorize! :read, @user
   end
 
   # GET /users/:id/edit
   def edit
-    # authorize! :update, @user
+    authorize! :update, @user
   end
 
   # PATCH/PUT /users/:id.:format
   def update
-    # authorize! :update, @user
+    authorize! :update, @user
     respond_to do |format|
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user 
+    authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
         @user.skip_reconfirmation!
@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
   # DELETE /users/:id.:format
   def destroy
-    # authorize! :delete, @user
+    authorize! :delete, @user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to root_url }

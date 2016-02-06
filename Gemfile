@@ -67,6 +67,9 @@ gem 'formtastic', '~> 3.0'
 # file attachment
 gem "refile", require: "refile/rails"
 gem 'refile-postgres'
+# datatable
+gem 'jquery-datatables-rails'
+gem 'ajax-datatables-rails'
 
 # =======================
 # JOB QUEUE GEMS
