@@ -1,0 +1,6 @@
+<%= bootstrap_form_for @form do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :website, label: "Website/Property" %>
+
+    <%= f.submit "Save" %>
+<% end %>

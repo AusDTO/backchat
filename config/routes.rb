@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :output, :path => 'outputs'
-  resources :output_job, :path => 'outputs/jobs'
-  resources :submission, :path => 'submissions'
-  resources :form, :path => 'forms'
+  # http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
+  resources :outputs
+  resources :forms
+
+  get 'submissions/:id' => 'submission#show'
+  post 'submit/:id' => 'submission#submit'
+
+  get 'outputs/jobs/:id' => 'sutput_job#show'
 
   # =======================
   # GENERAL

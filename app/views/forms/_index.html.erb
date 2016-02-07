@@ -1,0 +1,23 @@
+<a href="<%= new_form_path() %>" class="btn btn-primary pull-right">New Form</a>
+<h2 class="sub-header">Your Forms</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+
+      </tr>
+    </thead>
+    <tbody>
+    <% @forms.each do |form| %>
+        <tr>
+          <td><%= form.name %></td>
+          <td><%= link_to "Show", form %> </td>
+                 </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

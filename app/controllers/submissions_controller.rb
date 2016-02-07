@@ -1,4 +1,4 @@
-class SubmissionController < ApplicationController
+class SubmissionsController < ApplicationController
   load_and_authorize_resource
   def show
   end

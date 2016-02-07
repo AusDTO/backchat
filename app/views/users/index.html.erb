@@ -1,25 +1,4 @@
 <h1 class="page-header">Dashboard</h1>
 
-<h2 class="sub-header">Your Forms</h2>
-<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Actions</th>
-
-      </tr>
-    </thead>
-    <tbody>
-    <% @forms.each do |form| %>
-        <tr>
-          <td><%= form.id %></td>
-          <td><%= form.name %></td>
-          <td><%= link_to "Show", form %></td>
-                 </tr>
-    <% end %>
-
-    </tbody>
-  </table>
-</div>
+<%= render 'forms/index' %>
+<%= render 'outputs/index' %>

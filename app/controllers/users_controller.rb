@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # After login go here
   def index
     @forms = Form.all
+    @outputs = Output.all
   end
 
   # GET /users/:id.:format

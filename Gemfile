@@ -52,6 +52,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Use Bootstrap Offical Sass Port
 gem 'bootstrap-sass', '~> 3.3.0'
+# bootstrap form theme
+gem 'bootstrap_form'
 # Use FontAwesome Offical Sass Port
 gem 'font-awesome-sass', '~> 4.5.0'
 # Use SCSS for stylesheets
@@ -62,8 +64,6 @@ gem 'uglifier', '~> 2.7.0'
 gem 'coffee-rails', '~> 4.1.0'
 # Compress css to inline styles for HTML emails
 gem 'roadie-rails'
-# form generator
-gem 'formtastic', '~> 3.0'
 # file attachment
 gem "refile", require: "refile/rails"
 gem 'refile-postgres'
@@ -85,6 +85,7 @@ gem 'que'
 group :development do
   # better error page
   gem "better_errors"
+  gem "binding_of_caller"
 end
 group :development, :test do
 	# Test Framework we are using

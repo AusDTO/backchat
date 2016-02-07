@@ -1,0 +1,25 @@
+<a href="<%= new_output_path() %>" class="btn btn-primary pull-right">New Output</a>
+<h2 class="sub-header">Your Outputs</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Actions</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @outputs.each do |output| %>
+        <tr>
+          <td><%= output.name %></td>
+          <td><%= output.type %></td>
+
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

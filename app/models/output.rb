@@ -4,13 +4,13 @@ class Output < ActiveRecord::Base
  has_many :output_jobs
 end
 
-class ZenDeskOutput < Output
+class ZendeskOutput < Output
 
 end
 # https://developers.google.com/gmail/api/quickstart/ruby
 class GmailOutput < Output
 
 end
-class SheetOutput < Output
+class GoogleSheetOutput < Output
 
 end
