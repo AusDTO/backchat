@@ -1,4 +1,5 @@
-<%= semantic_form_for @output do |f| %>
-    <%= f.inputs %>
-    <%= f.actions %>
+<h1>Edit "<%= @output.name %>"</h1>
+<%= bootstrap_form_for @output, url: output_path(@output) do |f| %>
+<%= f.text_field :name %>
+    <%= f.submit "Save" %>
 <% end %>

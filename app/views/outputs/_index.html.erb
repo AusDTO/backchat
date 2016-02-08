@@ -14,7 +14,7 @@
     <tbody>
     <% @outputs.each do |output| %>
         <tr>
-          <td><%= output.name %></td>
+          <td><%= link_to output.name, output_path(output) %></td>
           <td><%= output.type %></td>
 
         </tr>

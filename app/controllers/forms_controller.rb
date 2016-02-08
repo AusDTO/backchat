@@ -4,6 +4,7 @@ class FormsController < ApplicationController
   # method descriptions https://gist.github.com/TonyMilton/c1b3f10c6e87da7c63bf
   def edit
     @form = Form.find(params[:id])
+    @available_outputs = Output.all
   end
   def new
     # https://github.com/plataformatec/devise/blob/master/lib/devise/controllers/helpers.rb#L101
@@ -34,7 +35,7 @@ class FormsController < ApplicationController
 
   private
   def form_params
-    params.require(:form).permit(:name, :website)
+    params.require(:form).permit(:name, :website, :outputs)
   end
   def destroy
     # very simple code to find the post we're referring to and
@@ -44,7 +45,7 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    @recent_submissions = Submission.where(form_id: @form.id).limit(10).order(:created_at, :desc)
+    @recent_submissions = Submission.where(form: @form).limit(10).order(:created_at, :desc) or []
     respond_to do |format|
       format.html
       format.json { render_json @form.to_json }

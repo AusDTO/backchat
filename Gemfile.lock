@@ -396,6 +396,7 @@ DEPENDENCIES
   puma
   que
   rack-livereload (~> 0.3.16)
+  rack-protection
   rails (= 4.2.5)
   rails_12factor
   rb-fsevent (~> 0.9.6)

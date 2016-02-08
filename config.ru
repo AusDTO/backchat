@@ -17,5 +17,10 @@ require 'prometheus/client/rack/exporter'
 use Prometheus::Client::Rack::Collector
 use Prometheus::Client::Rack::Exporter
 
+# web application firewall
+use Rack::Session::Pool
+require 'rack/protection'
+use Rack::Protection
+
 # run the rails
 run Rails.application

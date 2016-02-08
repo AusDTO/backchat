@@ -1,6 +1,7 @@
+<h1>Edit "<%= @form.name %>"</h1>
 <%= bootstrap_form_for @form do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :website, label: "Website/Property" %>
-
+    <%= f.collection_check_boxes :outputs, @available_outputs, :id, :name%>
     <%= f.submit "Save" %>
 <% end %>

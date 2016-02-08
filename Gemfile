@@ -119,6 +119,8 @@ gem 'capistrano', '~> 3.4.0'
 gem 'puma'
 # analytics
 gem 'prometheus-client'
+# web application firewall
+gem 'rack-protection'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT
@@ -130,22 +132,3 @@ group :development do
   gem 'rack-livereload',  '~> 0.3.16'
   gem 'rb-fsevent',       '~> 0.9.6',   :require => false
 end
-
-# =======================
-# INACTIVE DEFAULTS
-# =======================
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
