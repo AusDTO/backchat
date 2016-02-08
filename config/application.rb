@@ -23,6 +23,8 @@ module Rails4Boilerplate
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.active_job.queue_adapter= :que
+    config.active_record.schema_format = :sql
     # Tell Rails to use rspec and factory girl
     config.generators do |g|
         g.test_framework :rspec,

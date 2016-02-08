@@ -12,8 +12,8 @@ class OutputsController < ApplicationController
     # code to create a new output based on the parameters that
     # were submitted (and are now available in the
     # params hash)
-
-    @output = output.new(output_params)
+    oparams = output_params("")
+    @output = output.new(oparams)
     @output.user_id = current_user.id
     @output.save
     redirect_to @output, notice: 'Your output was successfully created.'

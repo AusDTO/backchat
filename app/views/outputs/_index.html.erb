@@ -7,7 +7,7 @@
     <tr>
       <th>Name</th>
       <th>Type</th>
-      <th>Actions</th>
+      <th>Jobs</th>
 
     </tr>
     </thead>
@@ -16,7 +16,7 @@
         <tr>
           <td><%= link_to output.name, output_path(output) %></td>
           <td><%= output.type %></td>
-
+          <td><%= output.output_jobs.count %></td>
         </tr>
     <% end %>
 
