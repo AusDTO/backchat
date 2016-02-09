@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "config",
+  "type": "object",
+  "properties": {
+    "zendesk_login": {
+      "type": "string",
+      "description": "Zendesk login email address"
+    },
+    "zendesk_token": {
+      "type": "string",
+      "description": "Zendesk API token"
+    },
+    "ticket": {
+      "description": "Template of the Zendesk ticket created by this output",
+      "type": "object",
+      "properties": {
+        "group_id": {
+          "type": "integer",
+          "description": "Group to assign to"
+        },
+        "requester_id": {
+          "type": "integer",
+          "description": "ID number of fake feedback user"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

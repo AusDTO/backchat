@@ -1,0 +1,10 @@
+{
+  "title": "form_fields",
+  "type": "array",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Field machine name"
+    }
+  }
+}

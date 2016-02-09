@@ -1,5 +1,31 @@
 <h1>Edit "<%= @output.name %>"</h1>
 <%= bootstrap_form_for @output, url: output_path(@output) do |f| %>
-<%= f.text_field :name %>
+    <%= f.text_field :name %>
+    <%= f.static_control :type %>
+    <%= f.hidden_field :configuration %>
+    <div id='editor_holder'></div>
     <%= f.submit "Save" %>
 <% end %>
+
+<script>
+  // Initialize the editor with a JSON schema
+  var $output = document.getElementById('configuration');
+  var editor = new JSONEditor(document.getElementById('editor_holder'),{
+    // Enable fetching schemas via ajax
+    ajax: true,
+
+    // The schema for the editor
+    schema: {
+      $ref: "<%= asset_path('zendeskoutput.json') %>",
+      format: "grid"
+    },
+    theme: 'bootstrap3',
+    // Seed the form with a starting value
+   //startval: starting_value
+  });
+  editor.on('change',function() {
+    var json = editor.getValue();
+
+    $output.value = JSON.stringify(json, null, 2);
+  });
+  </script>

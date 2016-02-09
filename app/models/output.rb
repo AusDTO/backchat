@@ -13,6 +13,10 @@ end
 
 class ZendeskOutput < Output
  def run
+  '''  "ticket": {
+    "subject": subject,
+
+    "comment": {"body": description}'''
   begin
    {"success" => false, "result" => {'msg' => "did not run"}.to_json}
   rescue Exception => e
