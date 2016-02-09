@@ -3,14 +3,33 @@
 
 Type: <%= @output.type %><br/>
 
-Output Jobs:
+Forms:
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
 
+    </tr>
+    </thead>
+    <tbody>
+    <% [].each do |form| %>
+        <tr>
+          <td><%= link_to form.name, form %> </td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
+
+Output Jobs:
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Date Created</th>
+      <th>Success?</th>
+      <th>Result</th>
     </tr>
     </thead>
     <tbody>

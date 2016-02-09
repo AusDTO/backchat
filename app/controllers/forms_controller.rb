@@ -29,13 +29,13 @@ class FormsController < ApplicationController
 
     #TODO make sure current_user = form.user and don't let it change unless admin
     form = Form.find(params[:id])
-    form.update_attributes!(form_params)
+    result = form.update_attributes!(form_params)
     redirect_to form, notice: 'Your form was successfully updated.'
   end
 
   private
   def form_params
-    params.require(:form).permit(:name, :website, :outputs)
+    params.require(:form).permit(:name, :website, :outputs, :input_fields)
   end
   def destroy
     # very simple code to find the post we're referring to and
@@ -45,7 +45,6 @@ class FormsController < ApplicationController
 
   def show
     @form = Form.find(params[:id])
-    @recent_submissions = Submission.where(form: @form).limit(10).order(:created_at, :desc) or []
     respond_to do |format|
       format.html
       format.json { render_json @form.to_json }

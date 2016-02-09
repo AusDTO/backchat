@@ -2,6 +2,25 @@
 <%= link_to "Edit", edit_form_path(@form.id), class: "btn btn-primary pull-right" %>
 
 Website: <%= @form.website %><br/>
+Input Fields:
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Name</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @form.input_fields.each do |input| %>
+        <tr>
+          <td><%= input['name'] %></td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
+
 Outputs:
 <div class="table-responsive">
   <table class="table table-striped">
@@ -15,7 +34,7 @@ Outputs:
     <tbody>
 <% @form.outputs.each do |output| %>
     <tr>
-      <td><%= output.name %></td>
+      <td><%= link_to output.name, output_path(output) %></td>
       <td><%= output.type %></td>
 
     </tr>
@@ -35,15 +54,14 @@ Recent Submissions:
     </tr>
     </thead>
     <tbody>
-    <% if not @recent_submissions.nil? %>
-    <% @recent_submissions.each do |submission| %>
+
+    <% @form.submissions.limit(10).order(created_at: :desc).each do |submission| %>
         <tr>
           <td><%= submission.created_at %></td>
           <td><%= submission.content %></td>
 
         </tr>
         <% end %>
-    <% end %>
 
     </tbody>
   </table>

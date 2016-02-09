@@ -1,10 +1,17 @@
 {
+  "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "form_fields",
   "type": "array",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "Field machine name"
+  "items": {
+    "title": "Field",
+    "type": "object",
+    "properties": {
+      "name": {
+        "type": "string",
+        "description": "Field machine name"
+      }
     }
-  }
+  },
+  "minItems": 1,
+  "uniqueItems": true
 }
