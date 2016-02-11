@@ -244,10 +244,12 @@ Devise.setup do |config|
   # config.omniauth :linkedin, APP_CONFIG["LINKEDIN_APP_ID"], ENV["LINKEDIN_APP_SECRET"]
 
   # Use Google apps auth
+  # https://developers.google.com/identity/protocols/googlescopes
   config.omniauth :google_oauth2, ENV["GOOGLE_CLIENT_ID"], ENV["GOOGLE_CLIENT_SECRET"], {
       :name => "google",
-      :scope => "email, profile",
-      :hd => "digital.gov.au"
+      :scope => "email, profile, gmail.send, drive.file",
+      :hd => "digital.gov.au",
+      :access_type => 'offline'
   }
 
   # ==> Warden configuration

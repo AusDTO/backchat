@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:google]
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
-
     # Get the identity and user if they exist
     identity = Identity.find_for_oauth(auth)
 
@@ -25,11 +24,16 @@ class User < ActiveRecord::Base
     # Create the user if needed
     if user.nil?
 
-      # Get the existing user by email if the provider gives us a verified email.
+      # Get the existing user by email if the provider (eg. facebook) gives us a verified email.
       # If no verified email was provided we assign a temporary email and ask the
       # user to verify it on the next step via UsersController.finish_signup
-      email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
-      email = auth.info.email if email_is_verified
+      # https://stackoverflow.com/questions/27085336/when-using-omniauth-in-rails-google-omniauth2-creates-a-new-user-if-the-user-ex
+      if auth.provider == 'google'
+        email = auth.info.email
+      else
+        email_is_verified = auth.info.email && (auth.info.verified || auth.info.verified_email)
+        email = auth.info.email if email_is_verified
+      end
       user = User.where(:email => email).first if email
 
       # Create the user if it's a new registration
@@ -40,13 +44,18 @@ class User < ActiveRecord::Base
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        #user.skip_confirmation!
         user.save!
       end
     end
 
     # Associate the identity with the user if needed
-    if identity.user != user
+    @auth = auth['credentials']
+    if identity.user != user or not @auth['refresh_token'].nil?
+      identity.access_token = @auth['token']
+      identity.id_token = auth['extra']['id_token']
+      identity.refresh_token = @auth['refresh_token']
+      identity.expires_at = Time.at(@auth['expires_at']).to_datetime
       identity.user = user
       identity.save!
     end

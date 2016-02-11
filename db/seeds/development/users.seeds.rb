@@ -6,7 +6,7 @@ User.create!([
                  {id: 2,email: "user@example.com", password: 'password',
                   password_confirmation: 'password', admin: false}
 ])
-
+#SELECT setval('users_id_seq',3);
 Form.delete_all
 f = Form.new(name: "My Form", website: "website.com", owner_id:2)
 f.save

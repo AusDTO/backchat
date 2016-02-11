@@ -48,8 +48,10 @@ bin/rake db:create
 bin/rake db:setup
 
 # rebuild db with seed data
+# need to revoke app if using google login if DB is wiped
+# https://security.google.com/settings/security/permissions
 bin/rake db:drop
 bin/rake db:create
 bin/rake db:migrate
-bin/rake db:setup
+bin/rake db:seed
 ```
