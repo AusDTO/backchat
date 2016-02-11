@@ -6,7 +6,7 @@ class CreateOutputs < ActiveRecord::Migration
       t.jsonb 'configuration', required: true
       t.string :type,  required: true
       t.references :owner, class_name: "User", index: true, required: true
-      t.references :form, index: true, required: true
+      t.references :form, type: :uuid, index: true, required: true
     end
 
     create_table :output_jobs, id: :uuid, default: 'gen_random_uuid()' do |t|

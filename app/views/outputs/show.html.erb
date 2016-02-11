@@ -13,7 +13,7 @@ Forms:
     </tr>
     </thead>
     <tbody>
-    <% [].each do |form| %>
+    <% [@output.form].each do |form| %>
         <tr>
           <td><%= link_to form.name, form %> </td>
         </tr>
@@ -30,10 +30,20 @@ Output Jobs:
       <th>Date Created</th>
       <th>Success?</th>
       <th>Result</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
+    <% @output.output_jobs.each do |output_job| %>
+        <tr>
+          <td><%= link_to output_job.id, '/'+output_job.id %> </td>
 
+          <td><%= output_job.success or 'unknown' %></td>
+          <td><%= output_job.result or 'unknown' %></td>
+          <td><%= link_to output_job.id, '/'+output_job.id %> </td>
+
+        </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

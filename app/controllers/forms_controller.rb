@@ -29,7 +29,7 @@ class FormsController < ApplicationController
 
     #TODO make sure current_user = form.user and don't let it change unless admin
     form = Form.find(params[:id])
-    result = form.update_attributes!(form_params)
+    form.update_attributes!(form_params)
     redirect_to form, notice: 'Your form was successfully updated.'
   end
 
@@ -55,7 +55,7 @@ class FormsController < ApplicationController
 
   def index
     if @user
-      @forms = Form.all
+      @forms = Form.where(:owner => @user)
     else
       redirect_to new_user_session_path, alert: 'Please sign in to view'
     end

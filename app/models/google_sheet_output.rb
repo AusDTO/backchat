@@ -1,9 +1,6 @@
-class ZendeskOutput < Output
-  def run
-    '''  "ticket": {
-    "subject": subject,
-
-    "comment": {"body": description}'''
+# https://developers.google.com/google-apps/spreadsheets/#adding_a_list_row
+class GoogleSheetOutput < Output
+  def run (submission)
     begin
       {"success" => false, "result" => {'msg' => "did not run"}.to_json}
     rescue Exception => e

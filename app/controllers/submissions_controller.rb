@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   load_and_authorize_resource
 
   def show
-    @submission = submission.find(params[:id])
+    @submission = Submission.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render_json @submission.to_json }

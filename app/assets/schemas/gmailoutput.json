@@ -1,1 +1,16 @@
-access_token:string refresh_token:string expires_at:datetime
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "config",
+  "type": "object",
+  "properties": {
+    "to": {
+      "type": "string",
+      "description": "Email to address"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Email Subject"
+    }
+
+  }
+}

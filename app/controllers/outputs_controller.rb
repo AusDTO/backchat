@@ -42,12 +42,11 @@ class OutputsController < ApplicationController
 
   def show
     @output = Output.find(params[:id])
-    @output_jobs = OutputJob.where(:output_id => @output.id)
   end
 
   def index
     if @user
-      @outputs = Output.all
+      @outputs = Output.where(:owner => @user)
     else
       redirect_to new_user_session_path, alert: 'Please sign in to view'
     end

@@ -4,8 +4,13 @@ class UsersController < ApplicationController
 
   # After login go here
   def index
-    @forms = Form.all
-    @outputs = Output.all
+    if @user.admin
+      @forms = Form.all
+      @outputs = Output.all
+      else
+      @forms = Form.where(:owner_id => @user.id)
+      @outputs = Output.where(:owner_id => @user.id)
+    end
   end
 
   # GET /users/:id.:format

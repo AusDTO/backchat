@@ -13,7 +13,7 @@ class GmailOutput < Output
 
 
       mail = Mail.new do
-        from configuration['from']
+        from 'no-reply@null'
         to configuration['to']
         subject configuration['subject']
         body submission.to_json

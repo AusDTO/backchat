@@ -4,6 +4,6 @@ class OutputJob < ActiveRecord::Base
   has_one :form, through: :submission
 
   def run
-    self.output.run()
+    self.output.run(self.submission)
   end
 end

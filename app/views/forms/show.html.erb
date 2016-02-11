@@ -12,11 +12,13 @@ Input Fields:
     </tr>
     </thead>
     <tbody>
+    <% if not @form.input_fields.nil? %>
     <% @form.input_fields.each do |input| %>
         <tr>
           <td><%= input['name'] %></td>
         </tr>
-    <% end %>
+        <% end %>
+        <% end %>
     </tbody>
   </table>
 </div>
@@ -57,7 +59,7 @@ Recent Submissions:
 
     <% @form.submissions.limit(10).order(created_at: :desc).each do |submission| %>
         <tr>
-          <td><%= submission.created_at %></td>
+          <td><%= link_to submission.created_at, '/submissions/'+submission.id %></td>
           <td><%= submission.content %></td>
 
         </tr>

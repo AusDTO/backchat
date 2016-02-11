@@ -104,8 +104,10 @@ CREATE TABLE identities (
     user_id integer,
     provider character varying,
     uid character varying,
+    id_token character varying,
     access_token character varying,
     refresh_token character varying,
+    scope character varying,
     expires_at timestamp without time zone,
     created_at timestamp without time zone,
     updated_at timestamp without time zone
@@ -156,7 +158,7 @@ CREATE TABLE outputs (
     configuration jsonb,
     type character varying,
     owner_id integer,
-    form_id integer
+    form_id uuid
 );
 
 
