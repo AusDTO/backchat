@@ -15,6 +15,10 @@
       "description": "Template of the Zendesk ticket created by this output",
       "type": "object",
       "properties": {
+        "subject": {
+          "type": "string",
+          "description": "Subject for new ticket"
+        },
         "group_id": {
           "type": "integer",
           "description": "Group to assign to"

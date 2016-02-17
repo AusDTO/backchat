@@ -2,6 +2,10 @@
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
 ## TODO
+- [ ]  Create outputs of different types from scratch
+- [ ]  Create end-to-end experience
+- [ ]  Store submission via POST
+- [ ]  Generate and run OutputJobs
 - [ ]  Have input fields with types including restrictions on uploaded files
 - [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
 - [ ]  Have thank-you url

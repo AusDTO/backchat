@@ -39,9 +39,15 @@ gem 'google-api-client'
 gem "omniauth-google-oauth2"
 # Access control
 gem "cancancan"
-# Slack Support For Notifications
-gem 'slack-poster'
 
+# =======================
+# APIs
+# =======================
+
+# Slack Support For Notifications https://github.com/rikas/slack-poster
+gem 'slack-poster'
+# http request wrapper https://github.com/rest-client/rest-client
+gem 'rest-client'
 # =======================
 # UI GEMS
 # =======================

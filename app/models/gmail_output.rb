@@ -6,11 +6,9 @@ require 'time'
 class GmailOutput < Output
   def run (submission)
     begin
-
       gmail = Google::Apis::GmailV1::GmailService.new
 
       gmail.authorization = self.owner.identity.as_user_cred
-
 
       mail = Mail.new do
         from 'no-reply@null'
