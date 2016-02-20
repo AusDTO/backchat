@@ -87,6 +87,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     domain_name (0.5.20160128)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.0)
@@ -324,6 +325,11 @@ GEM
       faraday (~> 0.9)
       jwt (~> 1.5)
       multi_json (~> 1.10)
+    simplecov (0.11.1)
+      docile (~> 1.1.0)
+      json (~> 1.8)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -405,6 +411,7 @@ DEPENDENCIES
   rspec-rails (~> 3.4.0)
   sass-rails (~> 5.0.0)
   seedbank
+  simplecov
   slack-poster
   spring
   turbolinks
