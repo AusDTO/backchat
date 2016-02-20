@@ -112,6 +112,7 @@ group :test do
   gem "database_cleaner", "~> 1.5.0"
   # code coverage reporting
   gem 'simplecov', :require => false
+  gem "nyan-cat-formatter"
   # Open web browser from test suite
   #gem "launchy", "~> 2.4.0"
   # Test JS browser interactions

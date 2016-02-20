@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     if @user.admin
       @forms = Form.all
       @outputs = Output.all
-      else
+    else
       @forms = Form.where(:owner_id => @user.id)
       @outputs = Output.where(:owner_id => @user.id)
     end
@@ -62,37 +62,37 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
-    def set_user
-      if current_user
-        @user = current_user
-      elsif params[:id]
-        @user = User.find(params[:id])
-      end
-      if @user
-        # For Gravatar lookup
-        @email_hash = Digest::MD5.hexdigest(@user.email.strip) 
-      else
-        redirect_to new_user_session_path, alert: 'Please sign in to view dashboard'
-      end
+  def set_user
+    if current_user
+      @user = current_user
+    elsif params[:id]
+      @user = User.find(params[:id])
     end
-
-    def user_params
-      accessible = [:name, :email] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+    if @user
+      # For Gravatar lookup
+      @email_hash = Digest::MD5.hexdigest(@user.email.strip)
+    else
+      redirect_to new_user_session_path, alert: 'Please sign in to view dashboard'
     end
+  end
 
-    private
+  private
+  def user_params
+    accessible = [:name, :email] # extend with your own params
+    accessible << [:password, :password_confirmation] unless params[:user][:password].blank?
+    params.require(:user).permit(accessible)
+  end
 
-    # Determine layout based on action name
-    def resolve_layout
-      case action_name
+
+  # Determine layout based on action name
+  def resolve_layout
+    case action_name
       when 'index'
         'dashboard'
       else
         'application'
-      end
     end
+  end
 end

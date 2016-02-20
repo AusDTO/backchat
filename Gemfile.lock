@@ -201,6 +201,8 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    nyan-cat-formatter (0.11)
+      rspec (>= 2.99, >= 2.14.2, < 4)
     oauth2 (1.1.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0, < 1.5.2)
@@ -292,6 +294,10 @@ GEM
     roadie-rails (1.1.0)
       railties (>= 3.0, < 4.3)
       roadie (~> 3.1)
+    rspec (3.4.0)
+      rspec-core (~> 3.4.0)
+      rspec-expectations (~> 3.4.0)
+      rspec-mocks (~> 3.4.0)
     rspec-collection_matchers (1.1.2)
       rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.4.3)
@@ -392,6 +398,7 @@ DEPENDENCIES
   jbuilder (~> 2.3.0)
   jquery-datatables-rails
   jquery-rails
+  nyan-cat-formatter
   omniauth
   omniauth-google-oauth2
   pg
