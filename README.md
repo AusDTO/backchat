@@ -47,7 +47,7 @@ createdb backchat_development
 createdb backchat_test
 #install deps
 bundle install
-
+echo 'SECRET_KEY_BASE=`rake secret`' > .env
 # setup db with seed data
 bin/rake db:create
 bin/rake db:setup

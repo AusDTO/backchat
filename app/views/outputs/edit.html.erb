@@ -10,6 +10,10 @@
 <script>
   // Initialize the editor with a JSON schema
   var $output = document.getElementById('configuration');
+  var startval = []
+  $.getJSON( "<%= output_path(@output) %>", function( data ) {
+    startval = data.configuration;
+  });
   var editor = new JSONEditor(document.getElementById('editor_holder'),{
     // Enable fetching schemas via ajax
     ajax: true,
@@ -20,9 +24,9 @@
       format: "grid"
     },
     theme: 'bootstrap3',
-    disable_properties: true
+    disable_properties: true,
     // Seed the form with a starting value
-   //startval: starting_value
+   startval: startval
   });
   editor.on('change',function() {
     var json = editor.getValue();

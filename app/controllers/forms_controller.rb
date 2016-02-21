@@ -48,7 +48,7 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
     respond_to do |format|
       format.html
-      format.json { render_json @form.to_json }
+      format.json { render_json @form }
     end
   end
 
