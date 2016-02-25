@@ -1,6 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe SubmissionController, type: :controller do
+RSpec.describe OutputsController, type: :controller do
+
+  describe "GET #edit" do
+    it "returns http success" do
+      get :edit
+      expect(response).to have_http_status(:success)
+    end
+  end
 
   describe "GET #show" do
     it "returns http success" do
@@ -9,9 +16,9 @@ RSpec.describe SubmissionController, type: :controller do
     end
   end
 
-  describe "GET #submit" do
+  describe "GET #new" do
     it "returns http success" do
-      get :submit
+      get :new
       expect(response).to have_http_status(:success)
     end
   end

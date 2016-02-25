@@ -59,7 +59,7 @@ Recent Submissions:
 
     <% @form.submissions.limit(10).order(created_at: :desc).each do |submission| %>
         <tr>
-          <td><%= link_to submission.created_at, '/submissions/'+submission.id %></td>
+          <td><%= link_to submission.created_at, submission %></td>
           <td><%= submission.content %></td>
 
         </tr>

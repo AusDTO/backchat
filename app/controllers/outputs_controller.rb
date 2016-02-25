@@ -12,8 +12,7 @@ class OutputsController < ApplicationController
     # code to create a new output based on the parameters that
     # were submitted (and are now available in the
     # params hash)
-    oparams = output_params("")
-    @output = output.new(oparams)
+    @output = output.new(output_params())
     @output.user_id = current_user.id
     @output.save
     redirect_to @output, notice: 'Your output was successfully created.'
@@ -24,15 +23,13 @@ class OutputsController < ApplicationController
     # done, redirect us to somewhere like the Show page for that
     # output
 
-    #TODO make sure current_user = output.user and don't let it change unless admin
     output = Output.find(params[:id])
-    oparams = output_params(output.type)
-    output.update_attributes!(oparams)
+    output.update_attributes!(output_params())
     redirect_to output_path(output), notice: 'Your output was successfully updated.'
   end
 
   private
-  def output_params(type)
+  def output_params()
     params.permit(:name)
   end
   def destroy

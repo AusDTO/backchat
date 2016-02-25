@@ -13,7 +13,7 @@ gem 'dotenv-rails', :groups => [:development, :test]
 # =======================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5'
+gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -110,6 +110,9 @@ group :test do
   gem "capybara", "~> 2.5.0"
   # Easily reset db between tests
   gem "database_cleaner", "~> 1.5.0"
+  # code coverage reporting
+  gem 'simplecov', :require => false
+  gem "nyan-cat-formatter"
   # Open web browser from test suite
   #gem "launchy", "~> 2.4.0"
   # Test JS browser interactions

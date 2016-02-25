@@ -44,9 +44,10 @@ ln -sfv /usr/local/opt/postgresql/*.plist ~/Library/LaunchAgents
 launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
 # logs etc. in /usr/local/var/postgres/
 createdb backchat_development
+createdb backchat_test
 #install deps
 bundle install
-
+echo 'SECRET_KEY_BASE=`rake secret`' > .env
 # setup db with seed data
 bin/rake db:create
 bin/rake db:setup

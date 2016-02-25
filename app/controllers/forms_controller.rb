@@ -6,6 +6,7 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
     @available_outputs = Output.all
   end
+
   def new
     # https://github.com/plataformatec/devise/blob/master/lib/devise/controllers/helpers.rb#L101
     @form = Form.new()
@@ -17,17 +18,17 @@ class FormsController < ApplicationController
     # params hash)
 
     @form = Form.new(form_params)
-@form.user_id = current_user.id
+    @form.user_id = current_user.id
     @form.save
     redirect_to @form, notice: 'Your form was successfully created.'
   end
+
   def update
     # code to figure out which form we're trying to update, then
     # actually update the attributes of that post.  Once that's
     # done, redirect us to somewhere like the Show page for that
     # form
 
-    #TODO make sure current_user = form.user and don't let it change unless admin
     form = Form.find(params[:id])
     form.update_attributes!(form_params)
     redirect_to form, notice: 'Your form was successfully updated.'
@@ -37,21 +38,19 @@ class FormsController < ApplicationController
   def form_params
     params.require(:form).permit(:name, :website, :outputs, :input_fields)
   end
+
   def destroy
     # very simple code to find the post we're referring to and
     # destroy it.  Once that's done, redirect us to somewhere fun.
   end
 
-
   def show
     @form = Form.find(params[:id])
     respond_to do |format|
       format.html
-      format.json { render_json @form.to_json }
+      format.json { render_json @form }
     end
   end
-
-
 
   def index
     if @user
