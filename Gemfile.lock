@@ -402,6 +402,7 @@ DEPENDENCIES
   rb-fsevent (~> 0.9.6)
   refile
   refile-postgres
+  rest-client
   roadie-rails
   rspec-collection_matchers
   rspec-rails (~> 3.4.0)
