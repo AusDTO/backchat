@@ -2,12 +2,11 @@
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
 ## TODO
-- [ ]  Create outputs of different types from scratch
-- [ ]  Create end-to-end experience
 - [ ]  Store submission via POST
 - [ ]  Generate and run OutputJobs
-- [ ]  Have input fields with types including restrictions on uploaded files
 - [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
+- [ ]  Create end-to-end experience
+- [ ]  Have input fields with types including restrictions on uploaded files
 - [ ]  Have thank-you url
 - [ ]  Produce stats via API eg. number responses/average satisfaction per page and total
 - [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. feedback recieved, feedback output jobs success/fail, by outputtype?

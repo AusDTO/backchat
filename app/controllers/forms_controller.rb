@@ -30,6 +30,13 @@ class FormsController < ApplicationController
     # form
 
     form = Form.find(params[:id])
+    for o in params['form'][:outputs]
+      if o != ''
+      output = Output.find(o)
+      output.form_id = form.id
+        output.save()
+        end
+    end
     form.update_attributes!(form_params)
     redirect_to form, notice: 'Your form was successfully updated.'
   end

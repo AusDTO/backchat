@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   post 'submit/:id' => 'submissions#submit'
 
   get 'outputs/jobs/:id' => 'output_jobs#show'
-
+  get 'outputs/jobs/:id/run' => 'output_jobs#run'
+  get 'outputs/jobs/:id/queue' => 'output_jobs#queue'
   # =======================
   # GENERAL
   # =======================
