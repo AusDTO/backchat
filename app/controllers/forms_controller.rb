@@ -18,7 +18,7 @@ class FormsController < ApplicationController
     # params hash)
 
     @form = Form.new(form_params)
-    @form.user_id = current_user.id
+    @form.owner_id = current_user.id
     @form.save
     redirect_to @form, notice: 'Your form was successfully created.'
   end

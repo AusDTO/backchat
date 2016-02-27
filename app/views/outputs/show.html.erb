@@ -14,10 +14,12 @@ Forms:
     </thead>
     <tbody>
     <% [@output.form].each do |form| %>
-        <tr>
+        <% if form %>
+          <tr>
           <td><%= link_to form.name, form %> </td>
         </tr>
         <% end %>
+    <% end %>
     </tbody>
   </table>
 </div>

@@ -12,10 +12,10 @@ class OutputsController < ApplicationController
     # code to create a new output based on the parameters that
     # were submitted (and are now available in the
     # params hash)
-    @output = output.new(output_params())
-    @output.user_id = current_user.id
+    @output = Output.new(params.require(:output).permit(:name,:type))
+    @output.owner_id = current_user.id
     @output.save
-    redirect_to @output, notice: 'Your output was successfully created.'
+    redirect_to outputs_path(@output), notice: 'Your output was successfully created.'
   end
   def update
     # code to figure out which output we're trying to update, then
@@ -24,13 +24,13 @@ class OutputsController < ApplicationController
     # output
 
     output = Output.find(params[:id])
-    output.update_attributes!(output_params())
-    redirect_to output_path(output), notice: 'Your output was successfully updated.'
+    output.update_attributes!(output_params)
+    redirect_to outputs_path(output), notice: 'Your output was successfully updated.'
   end
 
   private
   def output_params()
-    params.permit(:name)
+    params.require(:output).permit(:name,:configuration)
   end
   def destroy
     # very simple code to find the post we're referring to and

@@ -1,7 +1,7 @@
 <h1>New Output</h1>
-<%= bootstrap_form_for @output, url: output_path(@output) do |f| %>
+<%= bootstrap_form_for @output, url: outputs_path(@output) do |f| %>
     <%= f.text_field :name %>
-    <%= f.select :type, [["GmailOutput", "Gmail"], ["ZendeskOutput", "Zendesk"]],
+    <%= f.select :type, [["Gmail", "GmailOutput"], ["Zendesk","ZendeskOutput"]],
                  { label: "Output type:" }, { help: "Note: Once a new output is created, the type cannot be changed." } %>
     <%= f.submit "Save" %>
 <% end %>
