@@ -3,7 +3,6 @@ class FormsController < ApplicationController
 
   # method descriptions https://gist.github.com/TonyMilton/c1b3f10c6e87da7c63bf
   def edit
-    @form = Form.find(params[:id])
     @available_outputs = Output.all
   end
 
@@ -29,16 +28,15 @@ class FormsController < ApplicationController
     # done, redirect us to somewhere like the Show page for that
     # form
 
-    form = Form.find(params[:id])
     for o in params['form'][:outputs]
       if o != ''
       output = Output.find(o)
-      output.form_id = form.id
+      output.form_id = @form.id
         output.save()
         end
     end
-    form.update_attributes!(form_params)
-    redirect_to form, notice: 'Your form was successfully updated.'
+    @form.update_attributes!(form_params)
+    redirect_to @form, notice: 'Your form was successfully updated.'
   end
 
   private
@@ -52,7 +50,6 @@ class FormsController < ApplicationController
   end
 
   def show
-    @form = Form.find(params[:id])
     respond_to do |format|
       format.html
       format.json { render_json @form }

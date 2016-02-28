@@ -2,10 +2,10 @@ class OutputsController < ApplicationController
   load_and_authorize_resource
   # method descriptions https://gist.github.com/TonyMilton/c1b3f10c6e87da7c63bf
   def edit
-    @output = Output.find(params[:id])
+
   end
   def new
-    @output = Output.new()
+
   end
 
   def create
@@ -23,9 +23,8 @@ class OutputsController < ApplicationController
     # done, redirect us to somewhere like the Show page for that
     # output
 
-    output = Output.find(params[:id])
-    output.update_attributes!(output_params)
-    redirect_to outputs_path(output), notice: 'Your output was successfully updated.'
+    @output.update_attributes!(output_params)
+    redirect_to outputs_path(@output), notice: 'Your output was successfully updated.'
   end
 
   private
@@ -38,7 +37,7 @@ class OutputsController < ApplicationController
   end
 
   def show
-    @output = Output.find(params[:id])
+
   end
 
   def index

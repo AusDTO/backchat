@@ -1,5 +1,5 @@
 <h1>Edit "<%= @output.name %>"</h1>
-<%= bootstrap_form_for @output, url: output_path(@output) do |f| %>
+<%= bootstrap_form_for @output, as: :output, url: output_path(@output) do |f| %>
     <%= f.text_field :name %>
     <%= f.static_control :type %>
     <%= f.hidden_field :configuration %>
