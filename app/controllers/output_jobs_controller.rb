@@ -7,9 +7,11 @@ class OutputJobsController < ApplicationController
   def run
     @output_job = OutputJob.find(params[:id])
     @result = @output_job.run()
+    print @result
   end
   def queue
     @output_job = OutputJob.find(params[:id])
-    @result = @output_job.run()
-    end
+    @result = SubmitOutputJob.enqueue(@output_job.id)
+    print @result
+  end
 end

@@ -7,6 +7,10 @@
       "type": "string",
       "description": "Zendesk login email address"
     },
+    "zendesk_subdomain": {
+      "type": "string",
+      "description": "Zendesk subdomain for your account"
+    },
     "zendesk_token": {
       "type": "string",
       "description": "Zendesk API token"

@@ -1,21 +1,28 @@
 # Backchat
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
+[![Build Status](https://semaphoreci.com/api/v1/projects/c82d0221-805d-48dc-8d91-039f2f37e9d7/720541/badge.svg)](https://semaphoreci.com/maxious/backchat)
+
 ## TODO
+- [ ] Many-to-many outputs to forms
 - [ ]  Store submission via POST
 - [ ]  Generate and run OutputJobs
 - [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
 - [ ]  Create end-to-end experience
 - [ ]  Have input fields with types including restrictions on uploaded files
-- [ ]  Have thank-you url
+- [ ]  Have thank-you/error url
 - [ ]  Produce stats via API eg. number responses/average satisfaction per page and total
-- [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. feedback recieved, feedback output jobs success/fail, by outputtype?
+- [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. # feedback recieved, feedback output jobs success/fail, by outputtype?
 
 ## Lifecycle of a submission
 Submission is received as HTTP POST form or JSON, user sent back to thankyou
+
 Validated; does it match a form uuid, do the fields validate
+
 Store submission in DB
+
 Create output objects to track progress of submissions into other systems
+
 Create output jobs to action outputs asynchronously including for objects with no jobs
 
 
