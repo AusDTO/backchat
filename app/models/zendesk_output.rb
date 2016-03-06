@@ -10,9 +10,9 @@ class ZendeskOutput < Output
       payload.to_json, {contentType => 'application/json',
       :Authorization =>  'Basic ' + configuration["zendesk_login"] + "/token:" + configuration["zendesk_token"]})
 
-      {"success" => (result.code == 201), "result" => {'code'=> result.code,'msg' => result.to_s}.to_json}
+      {"success" => (result.code == 201), "result" => {'code'=> result.code,'msg' => result.to_s}}
     rescue Exception => e
-      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}.to_json}
+      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}}
     end
   end
 end

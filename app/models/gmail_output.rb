@@ -22,13 +22,13 @@ class GmailOutput < Output
                                        content_type: 'message/rfc822')
 
       if result.id.nil?
-        {"success" => false, "result" => {'msg' => result.to_s}.to_json}
+        {"success" => false, "result" => {'msg' => result.to_s}}
       else
-        {"success" => false, "result" => {'id' => result.id}.to_json}
+        {"success" => false, "result" => {'id' => result.id}}
       end
 
     rescue Exception => e
-      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}.to_json}
+      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}}
     end
   end
 end

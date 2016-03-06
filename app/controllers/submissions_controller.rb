@@ -19,7 +19,8 @@ class SubmissionsController < ApplicationController
     @submission.content = params.to_json
     @submission.save()
     for output in @form.outputs
-      @job = new OutputJob(output_id: output.id, submission_id: @submission.id)
+      @job = OutputJob.new(output_id: output.id, submission_id: @submission.id)
+      @job.save()
       #SubmitOutputJob.enqueue(@output_job.id)
     end
     respond_to do |format|

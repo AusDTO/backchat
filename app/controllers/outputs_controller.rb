@@ -24,7 +24,7 @@ class OutputsController < ApplicationController
     # output
 
     @output.update_attributes!(output_params)
-    redirect_to outputs_path(@output), notice: 'Your output was successfully updated.'
+    redirect_to output_path(@output), notice: 'Your output was successfully updated.'
   end
 
   private

@@ -4,9 +4,9 @@ class GoogleSheetOutput < Output
   def run (submission)
     begin
       session = GoogleDrive.login_with_oauth(self.owner.identity.as_user_cred.access_token)
-      {"success" => false, "result" => {'msg' => "did not run"}.to_json}
+      {"success" => false, "result" => {'msg' => "did not run"}}
     rescue Exception => e
-      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}.to_json}
+      {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}}
     end
   end
 end

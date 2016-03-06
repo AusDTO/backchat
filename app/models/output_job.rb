@@ -7,6 +7,9 @@ class OutputJob < ActiveRecord::Base
     self.submission_id[0,8] + '-' + self.output.to_s + ' ' + self.created_at.to_s(:default)
   end
   def run
-    self.output.run(self.submission)
+    r = self.output.run(self.submission)
+    self.success = r['success']
+    self.result = r['result']
+    r
   end
 end

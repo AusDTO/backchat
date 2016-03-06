@@ -1,9 +1,4 @@
 class SubmitOutputJob < Que::Job
-  queue_as :default
-
-  rescue_from(ActiveRecord::RecordNotFound) do |exception|
-    # do something with the exception
-  end
 
   def run(output_job_id)
     output_job = OutputJob[output_job_id]

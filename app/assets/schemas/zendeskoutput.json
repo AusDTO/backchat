@@ -2,6 +2,12 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "title": "config",
   "type": "object",
+  "required": [
+    "zendesk_login",
+    "zendesk_subdomain",
+    "zendesk_token",
+    "ticket"
+  ],
   "properties": {
     "zendesk_login": {
       "type": "string",
@@ -18,6 +24,12 @@
     "ticket": {
       "description": "Template of the Zendesk ticket created by this output",
       "type": "object",
+      "required":[
+        "subject",
+        "group_id",
+        "requester_id",
+        "tags"
+      ],
       "properties": {
         "subject": {
           "type": "string",

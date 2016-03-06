@@ -2,7 +2,8 @@
 <%= bootstrap_form_for @output, as: :output, url: output_path(@output) do |f| %>
     <%= f.text_field :name %>
     <%= f.static_control :type %>
-    <%= f.hidden_field :configuration %>
+    <textarea class="form-control hidden" name="output[configuration]" id="configuration">
+      </textarea>
     <div id='editor_holder'></div>
     <%= f.submit "Save" %>
 <% end %>
@@ -11,26 +12,27 @@
   // Initialize the editor with a JSON schema
   var $output = document.getElementById('configuration');
   var startval = []
-  $.getJSON( "<%= output_path(@output) %>", function( data ) {
+  $.getJSON("<%= output_path(@output) %>", function (data) {
     startval = data.configuration;
-  });
-  var editor = new JSONEditor(document.getElementById('editor_holder'),{
-    // Enable fetching schemas via ajax
-    ajax: true,
+    var editor = new JSONEditor(document.getElementById('editor_holder'), {
+      // Enable fetching schemas via ajax
+      ajax: true,
 
-    // The schema for the editor
-    schema: {
-      $ref: "<%= asset_path(@output.type.downcase+'.json') %>",
-      format: "grid"
-    },
-    theme: 'bootstrap3',
-    disable_properties: true,
-    // Seed the form with a starting value
-   startval: startval
-  });
-  editor.on('change',function() {
-    var json = editor.getValue();
+      // The schema for the editor
+      schema: {
+        $ref: "<%= asset_path(@output.type.downcase+'.json') %>",
+        format: "grid"
+      },
+      theme: 'bootstrap3',
+      disable_properties: true,
+      // Seed the form with a starting value
+      startval: startval
+    });
+    editor.on('change', function () {
+      var json = editor.getValue();
 
-    $output.value = JSON.stringify(json, null, 2);
+      $output.value = JSON.stringify(json, null, 2);
+    });
+
   });
-  </script>
+</script>

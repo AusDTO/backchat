@@ -1,1 +1,13 @@
-access_token:string refresh_token:string expires_at:datetime
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "config",
+  "type": "object",
+  "required": ["sheet_id"],
+  "properties": {
+    "sheet_id": {
+      "type": "string",
+      "description": "Sheet ID"
+    }
+
+  }
+}
