@@ -4,14 +4,12 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 [![Build Status](https://semaphoreci.com/api/v1/projects/c82d0221-805d-48dc-8d91-039f2f37e9d7/720541/badge.svg)](https://semaphoreci.com/maxious/backchat)
 
 ## TODO
-- [ ] Many-to-many outputs to forms
-- [ ]  Store submission via POST
-- [ ]  Generate and run OutputJobs
+- [ ]  Many-to-many outputs to forms with working association and deassociation UI
+- [ ]  Show view for each submission with absolute url helper
 - [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
-- [ ]  Create end-to-end experience
 - [ ]  Have input fields with types including restrictions on uploaded files
 - [ ]  Have thank-you/error url
-- [ ]  Produce stats via API eg. number responses/average satisfaction per page and total
+- [ ]  Produce stats for each form via API eg. number responses/average satisfaction per page and total
 - [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. # feedback recieved, feedback output jobs success/fail, by outputtype?
 
 ## Lifecycle of a submission

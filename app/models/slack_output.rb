@@ -1,15 +1,15 @@
 class SlackOutput < Output
-  def link_to (submission)
-    "zzz"
-  end
+
   def run (submission)
     begin
-      attachment = Slack::Attachment.new(
-          fallback: "Feedback for" + submission.form.website + " at " + submission.created_at.to_s(:default) + " - " + link_to(submission),
-          text: "<"+link_to(submission)+"|Feedback> for" + submission.form.website + " at " + submission.created_at.to_s(:default) + "\n"+submission.content.inspect
-      )
-      # attachment.add_field('Name1', 'Value1')
       # https://api.slack.com/docs/attachments
+      attachment = Slack::Attachment.new(
+          fallback: "Feedback for " + submission.form.website + " at " + submission.created_at.to_s(:default) + "\n"+submission.content.inspect ,
+          text: "Feedback for " + submission.form.website + " at " + submission.created_at.to_s(:default)
+      )
+      for key in submission.content.keys
+        attachment.add_field(key, submission.content[key])
+      end
 
       message = Slack::Message.new('Feedback', attachment)
       poster = Slack::Poster.new(self.configuration['webhook_url'])

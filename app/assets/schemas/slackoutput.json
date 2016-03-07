@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "config",
+  "title": "Slack Output Configuration",
   "type": "object",
   "required": ["webhook_url"],
   "properties": {

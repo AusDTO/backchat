@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "form_fields",
+  "title": "Input Fields",
   "type": "array",
   "items": {
     "title": "Field",

@@ -1,11 +1,11 @@
 class SubmitOutputJob < Que::Job
 
   def run(output_job_id)
-    output_job = OutputJob[output_job_id]
+    output_job = OutputJob.find(output_job_id)
 
     ActiveRecord::Base.transaction do
       # if not already finished
-      if not output.job.success
+      if not output_job.success
         result = {"success" => false, "result" => {'msg' => "did not run"}.to_json}
         begin
           result = output_job.run()
