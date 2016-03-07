@@ -5,9 +5,11 @@ class OutputJobsController < ApplicationController
   end
   def run
     @result = @output_job.run()
-    print @result
+    @output_job.success = @result['success']
+    @output_job.result = @result['result']
+    @output_job.save()
   end
   def queue
-    SubmitOutputJob.enqueue @output_job.id
+    @result = SubmitOutputJob.enqueue @output_job.id
   end
 end

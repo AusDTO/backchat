@@ -1,3 +1,7 @@
-<h1>OutputJob#run</h1>
-<p>Find me in app/views/output_job/run.html.erb</p>
-<pre><% @result.to_json %></pre>
+<h1><%=@output_job %></h1>
+<p>Success: <%= @result['success'] %></p>
+Results:
+<table>
+<% for (key,value) in @result['result'] %>
+    <tr><td><b><%=key%></b></td><td><%=value%></td></tr>
+<% end %></table>
