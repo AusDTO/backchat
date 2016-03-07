@@ -3,4 +3,6 @@ class Form < ActiveRecord::Base
   has_many :submissions
   has_many :outputs
 
+  validates :name, :website, presence: true
+
 end
