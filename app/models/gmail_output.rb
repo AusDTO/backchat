@@ -8,23 +8,33 @@ class GmailOutput < Output
     begin
       gmail = Google::Apis::GmailV1::GmailService.new
 
-      gmail.authorization = self.owner.identity.as_user_cred
-
+      gmail.authorization = Identity.find_by(user_id: self.owner_id).as_user_creds
+      configuration = self.configuration
       mail = Mail.new do
         from 'no-reply@null'
         to configuration['to']
         subject configuration['subject']
-        body submission.to_json
       end
+      text_part = Mail::Part.new do
+        body submission.inspect
+      end
+
+      html_part = Mail::Part.new do
+        content_type 'text/html; charset=UTF-8'
+        body submission.as_html
+      end
+
+      mail.text_part = text_part
+      mail.html_part = html_part
 
       result = gmail.send_user_message('me',
                                        upload_source: StringIO.new(mail.to_s),
                                        content_type: 'message/rfc822')
 
       if result.id.nil?
-        {"success" => false, "result" => {'msg' => result.to_s}}
+        {"success" => false, "result" => {'msg' => result.inspect}}
       else
-        {"success" => false, "result" => {'id' => result.id}}
+        {"success" => true, "result" => {'id' => result.id}}
       end
 
     rescue Exception => e

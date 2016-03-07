@@ -2,4 +2,19 @@ class Submission < ActiveRecord::Base
   belongs_to :form
   has_many :output_jobs
   attachment :file
+
+  def as_html
+    output = ""
+    output += "ID: <a href='"+submission_url+"'>"+self.id+"</a><br>\n"
+    output += "Submitted: "+self.created_at.to_s(:default)+"<br>\n"
+    output +="<table>"
+    for key in self.content.keys
+      output +="<tr><td><b>"+key+"</b></td><td>"+ self.content[key]+"</td></tr>"
+    end
+    output +="</table>"
+    output
+  end
+  def submission_url
+    "https://"+APP_CONFIG["app_domain"] + '/submission/'+id
+  end
 end
