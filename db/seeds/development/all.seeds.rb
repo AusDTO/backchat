@@ -7,6 +7,7 @@ User.create!([
                   password_confirmation: 'password', admin: false}
 ])
 #SELECT setval('users_id_seq',3);
+ActiveRecord::Base.connection.execute("SELECT setval('users_id_seq', 3);")
 Form.delete_all
 f = Form.new(name: "My Form", website: "website.com", owner_id:2, input_fields: '[{"name": "site_or_page"}, {"name": "feeling"}, {"name": "feedback"}, {"name": "referrer"}, {"name": "fp"}]')
 f.save
