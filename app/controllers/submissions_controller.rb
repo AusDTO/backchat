@@ -16,6 +16,9 @@ class SubmissionsController < ApplicationController
     @submission = Submission.new()
     @submission.form_id = @form.id
     @submission.path = params[:referrer]
+    if params[:satisfaction]
+      @submission.satisfaction = params[:satisfaction]
+    end
     @submission.content = params.to_json
     @submission.save()
     for output in @form.outputs

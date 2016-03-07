@@ -50,6 +50,7 @@ class FormsController < ApplicationController
   end
 
   def show
+    @form.satisfaction =
     respond_to do |format|
       format.html
       format.json { render_json @form }
