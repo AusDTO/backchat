@@ -57,6 +57,16 @@ CREATE TABLE forms (
 
 
 --
+-- Name: forms_outputs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE forms_outputs (
+    output_id uuid,
+    form_id uuid
+);
+
+
+--
 -- Name: global_configs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -157,8 +167,7 @@ CREATE TABLE outputs (
     name character varying,
     configuration jsonb,
     type character varying,
-    owner_id integer,
-    form_id uuid
+    owner_id integer
 );
 
 
@@ -419,6 +428,20 @@ CREATE INDEX index_forms_on_owner_id ON forms USING btree (owner_id);
 
 
 --
+-- Name: index_forms_outputs_on_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forms_outputs_on_form_id ON forms_outputs USING btree (form_id);
+
+
+--
+-- Name: index_forms_outputs_on_output_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE INDEX index_forms_outputs_on_output_id ON forms_outputs USING btree (output_id);
+
+
+--
 -- Name: index_identities_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -437,13 +460,6 @@ CREATE INDEX index_output_jobs_on_output_id ON output_jobs USING btree (output_i
 --
 
 CREATE INDEX index_output_jobs_on_submission_id ON output_jobs USING btree (submission_id);
-
-
---
--- Name: index_outputs_on_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX index_outputs_on_form_id ON outputs USING btree (form_id);
 
 
 --

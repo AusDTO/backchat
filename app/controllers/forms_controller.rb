@@ -31,8 +31,9 @@ class FormsController < ApplicationController
     for o in params['form'][:outputs]
       if o != ''
         output = Output.find(o)
-        output.form_id = @form.id
-        output.save()
+        if not @form.outputs.includes(output)
+          @form.outputs << output
+        end
       end
     end
     @form.update_attributes!(form_params)
