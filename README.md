@@ -6,10 +6,9 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 ## TODO
 - [ ]  Many-to-many outputs to forms with working association and deassociation UI
 - [ ]  Show view for each submission with absolute url helper
-- [ ]  Have outputs, email, zendesk, Google sheet with api authorisation tokens and other configuration/templates
-- [ ]  Have input fields with types including restrictions on uploaded files
-- [ ]  Have thank-you/error url
-- [ ]  Produce stats for each form via API eg. number responses/average satisfaction per page and total
+- [ ]  Have input fields including uploaded files
+- [ ]  Have thank-you/error url options so users can get back to the page they were on
+- [ ]  Produce stats for per page satisfaction
 - [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. # feedback recieved, feedback output jobs success/fail, by outputtype?
 
 ## Lifecycle of a submission

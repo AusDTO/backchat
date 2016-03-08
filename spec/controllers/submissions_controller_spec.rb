@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe SubmissionsController, type: :controller do
+  before :each do
+    @submission = create(:submission)
+  end
 
   describe "GET #show" do
     it "returns http success" do
