@@ -1,2 +1,5 @@
 <h1>Submission#show</h1>
-<p>Find me in app/views/submission/show.html.erb</p>
+<table>
+<% for (key,value) in @submission.attributes %>
+    <tr><td><b><%=key%></b></td><td><%=value%></td></tr>
+<% end %></table>

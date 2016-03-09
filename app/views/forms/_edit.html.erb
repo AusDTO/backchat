@@ -2,7 +2,7 @@
 <%= bootstrap_form_for @form do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :website, label: "Website/Property" %>
-    <%= f.collection_check_boxes :outputs, Output.all, :id, :name%>
+    <%= f.collection_check_boxes :output_ids, Output.all, :id, :name%>
     <textarea class="form-control hidden" name="form[input_fields]" id="form_input_fields">
       </textarea>
     <div id='editor_holder'></div>

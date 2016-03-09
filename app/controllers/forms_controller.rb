@@ -28,26 +28,13 @@ class FormsController < ApplicationController
     # done, redirect us to somewhere like the Show page for that
     # form
 
-    for o in params['form'][:outputs]
-      if o != ''
-        output = Output.find(o)
-        if not @form.outputs.includes(output)
-          @form.outputs << output
-        end
-      end
-    end
-    for o in @form.outputs
-      if not params['form'][:outputs].includes?(o.id)
-        @form.outputs.delete(o)
-      end
-    end
     @form.update_attributes!(form_params)
     redirect_to @form, notice: 'Your form was successfully updated.'
   end
 
   private
   def form_params
-    params.require(:form).permit(:name, :website, :outputs, :input_fields)
+    params.require(:form).permit(:name, :website, :input_fields, :output_ids => [])
   end
 
   def destroy

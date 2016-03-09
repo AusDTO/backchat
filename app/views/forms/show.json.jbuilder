@@ -1,0 +1,1 @@
+json.(@form, :id,:name,:website, :satisfaction_avg,:submissions_count, :input_fields)
