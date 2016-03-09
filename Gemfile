@@ -7,6 +7,10 @@ ruby '2.2.3'
 
 # Local ENV variables for testing & development
 gem 'dotenv-rails', :groups => [:development, :test]
+# cloudfoundry utils
+gem 'cf-app-utils'
+# http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html#rails-4
+gem 'rails_serve_static_assets'
 
 # =======================
 # RAILS CORE

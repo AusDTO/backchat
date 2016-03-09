@@ -63,3 +63,17 @@ bin/rake db:create
 bin/rake db:migrate
 bin/rake db:seed
 ```
+
+### Setting Up/Deploying to cloudfoundry
+Thanks to http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html
+```
+cf create-service aws-rds-postgres 9.4-bronze backchat-db
+cf push
+# https://docs.pivotal.io/pivotalcf/devguide/services/migrate-db.html
+cf set-env backchat SECRET_KEY_BASE `rake secret`
+cf set-env backchat GOOGLE_CLIENT_SECRET 'abc'
+cf set-env backchat GOOGLE_CLIENT_ID '123'
+
+rake assets:precompile
+cf push
+```

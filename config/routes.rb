@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :outputs
   resources :forms
 
-  get 'submissions/:id' => 'submissions#show'
+  get 'submissions/:id' => 'submissions#show', as: :submission
   post 'submit/:id' => 'submissions#submit'
 
   get 'outputs/jobs/:id' => 'output_jobs#show'

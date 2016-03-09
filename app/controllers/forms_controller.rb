@@ -36,6 +36,11 @@ class FormsController < ApplicationController
         end
       end
     end
+    for o in @form.outputs
+      if not params['form'][:outputs].includes?(o.id)
+        @form.outputs.delete(o)
+      end
+    end
     @form.update_attributes!(form_params)
     redirect_to @form, notice: 'Your form was successfully updated.'
   end

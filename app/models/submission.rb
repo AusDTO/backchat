@@ -26,7 +26,5 @@ end
     end
     output
   end
-  def submission_url
-    "https://"+APP_CONFIG["app_domain"] + '/submission/'+id
-  end
+
 end
