@@ -3,6 +3,8 @@ class Form < ActiveRecord::Base
   has_many :submissions
   has_and_belongs_to_many :outputs
 
+  validates :name, :website, presence: true
+
   def satisfaction_avg
     submissions.average(:satisfaction)
   end

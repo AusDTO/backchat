@@ -3,6 +3,8 @@ class Output < ActiveRecord::Base
  has_and_belongs_to_many :forms
  has_many :output_jobs
 
+ validates :name, :configuration, :type, :form, presence: true
+
   def to_s
    self.name
   end

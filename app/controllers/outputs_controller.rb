@@ -14,8 +14,12 @@ class OutputsController < ApplicationController
     # params hash)
     @output = Output.new(params.require(:output).permit(:name,:type))
     @output.owner_id = current_user.id
-    @output.save
-    redirect_to outputs_path(@output), notice: 'Your output was successfully created.'
+
+    if @output.save
+      redirect_to outputs_path(@output), notice: 'Your output was successfully created.'
+    else
+      render 'new'
+    end
   end
   def update
     # code to figure out which output we're trying to update, then

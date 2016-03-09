@@ -18,8 +18,12 @@ class FormsController < ApplicationController
 
     @form = Form.new(form_params)
     @form.owner_id = current_user.id
-    @form.save
-    redirect_to @form, notice: 'Your form was successfully created.'
+    if @form.save
+      redirect_to @form, notice: 'Your form was successfully created.'
+    else
+      render 'new'
+    end
+
   end
 
   def update
