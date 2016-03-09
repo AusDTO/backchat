@@ -223,6 +223,8 @@ GEM
     quantile (0.2.0)
     que (0.11.4)
     rack (1.6.4)
+    rack-cache (1.6.1)
+      rack (>= 0.4)
     rack-livereload (0.3.16)
       rack
     rack-protection (1.5.3)
@@ -394,6 +396,7 @@ DEPENDENCIES
   prometheus-client
   puma
   que
+  rack-cache
   rack-livereload (~> 0.3.16)
   rack-protection
   rails (= 4.2.5.1)

@@ -135,6 +135,8 @@ gem 'puma'
 gem 'prometheus-client'
 # web application firewall
 gem 'rack-protection'
+# caching
+gem 'rack-cache'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT
