@@ -1,10 +1,11 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :form, class: Form do
-		association :owner
-  	name 		"test form"
-    website "www.website.com"
+  factory :output_job do
+  	association :submission
+    association :output
+    success      true
+    result      ({"msg" => "all good"})
   	id					{Faker::Lorem.characters([8,14])}
   end
 end

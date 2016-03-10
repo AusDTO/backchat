@@ -40,6 +40,7 @@ gem 'omniauth'
 # Use Google APIs and google auth
 # https://developers.google.com/api-client-library/ruby/auth/web-app#offline
 gem 'google-api-client'
+gem 'googleauth'
 gem "omniauth-google-oauth2"
 # Access control
 gem "cancancan"

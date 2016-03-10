@@ -7,12 +7,11 @@ FactoryGirl.define do
   	admin			false
 		password 	{Faker::Internet.password(min_length = 8)}
 
-    factory :invalid_user do
-    	email 		nil
+		factory :owner do
+			admin 		true
     end
-
     factory :admin_user do
-    	admin 		true
-    end
+			admin 		true
+		end
   end
 end

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :forms
   has_many :outputs
+  has_many :identities, :dependent => :delete_all
 
 	# Define what an email should look like
 	TEMP_EMAIL_PREFIX = 'change@me'

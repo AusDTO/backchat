@@ -1,5 +1,5 @@
 class Form < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :owner, :class_name => "User"
   has_many :submissions
   has_and_belongs_to_many :outputs
 

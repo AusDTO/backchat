@@ -2,8 +2,11 @@
 
 FactoryGirl.define do
   factory :output do
-  	association :user
-  	provider 		"facebook"
-  	uid					{Faker::Lorem.characters([8,14])}
+		association :owner, factory: :user
+    forms {[create(:form)]}
+    name		"facebook"
+    configuration ({"A"=>"b"})
+    type	"SlackOutput"
+  	id					{Faker::Lorem.characters([8,14])}
   end
 end

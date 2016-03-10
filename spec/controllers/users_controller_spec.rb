@@ -12,9 +12,6 @@ RSpec.describe UsersController, :type => :controller do
 		expect(get :index).to redirect_to(new_user_session_path)
 	end
 
-	describe "GET #index" do
-		it "redirects the user if not signed in"
-	end
 
 	describe "PATCH #update" do
 

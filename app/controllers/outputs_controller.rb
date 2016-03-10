@@ -18,6 +18,7 @@ class OutputsController < ApplicationController
     if @output.save
       redirect_to outputs_path(@output), notice: 'Your output was successfully created.'
     else
+      # TODO show the error!
       render 'new'
     end
   end
@@ -33,7 +34,7 @@ class OutputsController < ApplicationController
 
   private
   def output_params()
-    params.require(:output).permit(:name,:configuration)
+    params.require(:output).permit(:name,:type,:configuration)
   end
   def destroy
     # very simple code to find the post we're referring to and

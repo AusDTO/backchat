@@ -14,7 +14,9 @@ class SubmissionsController < ApplicationController
     @form = Form.find(params[:id])
     @submission = Submission.new()
     @submission.form_id = @form.id
-    @submission.path = params[:referrer]
+    if params[:referrer]
+      @submission.path = params[:referrer]
+    end
     if params[:satisfaction]
       @submission.satisfaction = params[:satisfaction]
     end

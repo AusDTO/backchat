@@ -1,9 +1,9 @@
 class Output < ActiveRecord::Base
- belongs_to :user
+ belongs_to :owner, :class_name => "User"
  has_and_belongs_to_many :forms
  has_many :output_jobs
 
- validates :name, :configuration, :type, :form, presence: true
+ validates :name, :type, presence: true
 
   def to_s
    self.name
@@ -12,5 +12,3 @@ class Output < ActiveRecord::Base
    raise 'No output run code defined'
   end
 end
-
-
