@@ -107,6 +107,8 @@ group :development, :test do
 end
 
 group :test do
+  #junit formatter
+  gem 'rspec_junit_formatter', '0.2.2'
   gem "rspec-collection_matchers"
 	# Fake data generator
   gem "faker", "~> 1.6.0"
