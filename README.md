@@ -1,7 +1,7 @@
 # Backchat
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
-[![Build Status](https://semaphoreci.com/api/v1/projects/c82d0221-805d-48dc-8d91-039f2f37e9d7/720541/badge.svg)](https://semaphoreci.com/maxious/backchat)
+[![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg)](https://circleci.com/gh/AusDTO/backchat)
 
 ## TODO
 - [ ]  Have input fields including uploaded files
