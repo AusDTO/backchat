@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   has_many :outputs
   has_many :identities, :dependent => :delete_all
 
-	# Define what an email should look like
-	TEMP_EMAIL_PREFIX = 'change@me'
-	TEMP_EMAIL_REGEX = /\Achange@me/
+  # Define what an email should look like
+  TEMP_EMAIL_PREFIX = 'change@me'
+  TEMP_EMAIL_REGEX = /\Achange@me/
 
   # Include default devise modules. Others available are:
   #  :lockable, :timeoutable, :confirmable
@@ -40,11 +40,11 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20],
-          admin: (email == 'alex.sadleir@digital.gov.au')
+            name: auth.extra.raw_info.name,
+            #username: auth.info.nickname || auth.uid,
+            email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+            password: Devise.friendly_token[0, 20],
+            admin: (email == 'alex.sadleir@digital.gov.au')
         )
         #user.skip_confirmation!
         user.save!
@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
 
   def is_admin?
     self.admin
-  end 
+  end
 
   protected
 end

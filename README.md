@@ -71,6 +71,6 @@ cf set-env backchat SECRET_KEY_BASE `rake secret`
 cf set-env backchat GOOGLE_CLIENT_SECRET 'abc'
 cf set-env backchat GOOGLE_CLIENT_ID '123'
 
-rake assets:precompile
+cf push -c "bundle exec rake db:structure:ar_load QUE_MODE=off QUE_WORKERS=0" #first time setup
 cf push
 ```

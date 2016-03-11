@@ -2,9 +2,16 @@ class Submission < ActiveRecord::Base
   belongs_to :form
   has_many :output_jobs
   attachment :file
-def to_s
-  self.id + " @ "+self.created_at.to_s(:default)
-end
+  before_create :generate_uuid, unless: :id
+
+  def generate_uuid
+    self.id = SecureRandom.uuid
+  end
+
+  def to_s
+    self.id + " @ "+self.created_at.to_s(:default)
+  end
+
   def as_html
     output = ""
     output += "ID: <a href='"+submission_url+"'>"+self.id+"</a><br>\n"
@@ -16,6 +23,7 @@ end
     output +="</table>"
     output
   end
+
   def as_string
     output = ""
     output += "ID: "+self.id+"\n"

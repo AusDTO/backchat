@@ -23,20 +23,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
---
--- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
---
-
-CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
-
-
---
--- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
---
-
-COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
-
-
 SET search_path = public, pg_catalog;
 
 SET default_tablespace = '';
@@ -48,7 +34,7 @@ SET default_with_oids = false;
 --
 
 CREATE TABLE forms (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id character varying NOT NULL,
     name character varying,
     website character varying,
     input_fields jsonb,
@@ -61,8 +47,8 @@ CREATE TABLE forms (
 --
 
 CREATE TABLE forms_outputs (
-    output_id uuid,
-    form_id uuid
+    output_id character varying,
+    form_id character varying
 );
 
 
@@ -148,9 +134,9 @@ ALTER SEQUENCE identities_id_seq OWNED BY identities.id;
 --
 
 CREATE TABLE output_jobs (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
-    output_id uuid,
-    submission_id uuid,
+    id character varying NOT NULL,
+    output_id character varying,
+    submission_id character varying,
     success boolean,
     result jsonb,
     created_at timestamp without time zone,
@@ -163,7 +149,7 @@ CREATE TABLE output_jobs (
 --
 
 CREATE TABLE outputs (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id character varying NOT NULL,
     name character varying,
     configuration jsonb,
     type character varying,
@@ -256,14 +242,14 @@ CREATE TABLE schema_migrations (
 --
 
 CREATE TABLE submissions (
-    id uuid DEFAULT gen_random_uuid() NOT NULL,
+    id character varying NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     path character varying,
     satisfaction numeric(3,0),
     file_id character varying,
     content jsonb,
-    form_id uuid
+    form_id character varying
 );
 
 

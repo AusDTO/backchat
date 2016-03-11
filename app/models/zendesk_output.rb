@@ -6,7 +6,7 @@ class ZendeskOutput < Output
       payload = {"ticket" => self.configuration['ticket']}
       payload['ticket']['subject'] = self.form.website
       payload['ticket']['comment'] = {'body' => submission.as_string}
-      headers = {"Content-Type" => 'application/json',"Accept" => 'application/json',
+      headers = {"Content-Type" => 'application/json', "Accept" => 'application/json',
                  "Authorization" => 'Basic ' +
                      Base64.strict_encode64(self.configuration["zendesk_login"] + "/token:" + self.configuration["zendesk_token"])}
 

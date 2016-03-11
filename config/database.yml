@@ -19,7 +19,7 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
+  pool: <%= ENV["DB_POOL"] || ENV["MAX_THREADS"] || 5 %>
 
 development:
   <<: *default
@@ -29,10 +29,10 @@ development:
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: <%= ENV['DATABASE_USER'] %>
+  #username: <%= ENV['DATABASE_USER'] %>
 
   # The password associated with the postgres role (username).
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  #password: <%= ENV['DATABASE_PASSWORD'] %>
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -58,8 +58,6 @@ development:
 test:
   <<: *default
   database: backchat_test
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -82,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: backchat_production
-  username: backchat
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

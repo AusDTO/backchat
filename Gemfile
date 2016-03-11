@@ -40,7 +40,6 @@ gem 'omniauth'
 # Use Google APIs and google auth
 # https://developers.google.com/api-client-library/ruby/auth/web-app#offline
 gem 'google-api-client'
-gem 'googleauth'
 gem "omniauth-google-oauth2"
 # Access control
 gem "cancancan"
@@ -117,7 +116,6 @@ group :test do
   gem "database_cleaner", "~> 1.5.0"
   # code coverage reporting
   gem 'simplecov', :require => false
-  gem "nyan-cat-formatter"
 
   # Open web browser from test suite
   #gem "launchy", "~> 2.4.0"

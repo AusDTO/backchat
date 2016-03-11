@@ -4,7 +4,7 @@ class SlackOutput < Output
     begin
       # https://api.slack.com/docs/attachments
       attachment = Slack::Attachment.new(
-          fallback: "Feedback for " + submission.form.website + " at " + submission.created_at.to_s(:default) + "\n"+submission.content.inspect ,
+          fallback: "Feedback for " + submission.form.website + " at " + submission.created_at.to_s(:default) + "\n"+submission.content.inspect,
           text: "Feedback for " + submission.form.website + " at " + submission.created_at.to_s(:default)
       )
       for key in submission.content.keys
@@ -15,9 +15,9 @@ class SlackOutput < Output
       poster = Slack::Poster.new(self.configuration['webhook_url'])
       result = poster.send_message(message)
       if result.status == 200 && result.body == 'ok'
-        {"success" => true, "result" => {'code' =>result.status, 'msg' => result.inspect}}
+        {"success" => true, "result" => {'code' => result.status, 'msg' => result.inspect}}
       else
-        {"success" => false, "result" => {'code' =>result.status, 'msg' => result.inspect}}
+        {"success" => false, "result" => {'code' => result.status, 'msg' => result.inspect}}
       end
     rescue Exception => e
       {"success" => false, "result" => {'msg' => e.message, 'trace' => e.backtrace.inspect}}

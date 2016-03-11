@@ -4,6 +4,11 @@ class Form < ActiveRecord::Base
   has_and_belongs_to_many :outputs
 
   validates :name, :website, presence: true
+  before_create :generate_uuid, unless: :id
+
+  def generate_uuid
+    self.id = SecureRandom.uuid
+  end
 
   def satisfaction_avg
     submissions.average(:satisfaction)
