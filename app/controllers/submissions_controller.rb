@@ -27,6 +27,9 @@ class SubmissionsController < ApplicationController
       @job.save()
       SubmitOutputJob.enqueue @job.id
     end
+    prometheus = Prometheus::Client.registry
+    http_requests = prometheus.counter(:feedback_received, 'A counter of feedback submissions received')
+    http_requests.increment(form: @form.id)
     respond_to do |format|
       format.json do
         render json: @submission.to_json

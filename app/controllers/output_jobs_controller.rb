@@ -8,6 +8,9 @@ class OutputJobsController < ApplicationController
     @output_job.success = @result['success']
     @output_job.result = @result['result']
     @output_job.save()
+    prometheus = Prometheus::Client.registry
+    output_jobs_run = prometheus.counter(:output_jobs_run, 'A counter of feedback submissions received')
+    output_jobs_run.increment(output: @output.id, output_type: @output.type, success: @output_job.success)
   end
   def queue
     @result = SubmitOutputJob.enqueue @output_job.id

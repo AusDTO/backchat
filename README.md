@@ -5,8 +5,7 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 
 ## TODO
 - [ ]  Have input fields including uploaded files
-- [ ]  Have thank-you/error url options so users can get back to the page they were on
-- [ ]  Produce system metrics via https://github.com/prometheus/client_ruby ie. # feedback recieved, feedback output jobs success/fail, by output type?
+- [ ]  Have thank-you url option including referrer so users can get back to the page they were on
 
 ## Lifecycle of a submission
 Submission is received as HTTP POST form or JSON, user sent back to thankyou
