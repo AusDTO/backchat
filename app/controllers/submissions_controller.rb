@@ -1,6 +1,12 @@
 class SubmissionsController < ApplicationController
   # allow external post for submit
   skip_before_action :verify_authenticity_token, only: [:submit]
+  before_filter :start_counter
+  def start_counter
+    if not $feedback_received
+      $feedback_received = Prometheus::Client.registry.counter(:feedback_received, 'A counter of feedback submissions received')
+    end
+  end
 
   def show
     @submission = Submission.find(params[:id])
@@ -20,6 +26,10 @@ class SubmissionsController < ApplicationController
     if params[:satisfaction]
       @submission.satisfaction = params[:satisfaction]
     end
+    if params[:file]
+      @submission.file = params[:file]
+    end
+    #TODO filter by expected input fields
     @submission.content = params.to_json
     @submission.save()
     for output in @form.outputs
@@ -27,10 +37,13 @@ class SubmissionsController < ApplicationController
       @job.save()
       SubmitOutputJob.enqueue @job.id
     end
-    prometheus = Prometheus::Client.registry
-    http_requests = prometheus.counter(:feedback_received, 'A counter of feedback submissions received')
-    http_requests.increment(form: @form.id)
+    $feedback_received.increment(form: @form.id)
     respond_to do |format|
+      format.html do
+        if (@form.redirect_url)
+          redirect_to @form.redirect_url+"?referrer=#{@submission.path}"
+        end
+      end
       format.json do
         render json: @submission.to_json
       end

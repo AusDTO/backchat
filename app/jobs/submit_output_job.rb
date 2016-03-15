@@ -1,5 +1,5 @@
 class SubmitOutputJob < Que::Job
-
+  @run_at = proc { 10.second.from_now }
   def run(output_job_id)
     output_job = OutputJob.find(output_job_id)
 

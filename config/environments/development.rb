@@ -52,5 +52,4 @@ Rails.application.configure do
     authentication:       'login',
     domain:               'localhost'
   }
-  Que.mode = :sync
 end

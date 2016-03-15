@@ -38,7 +38,8 @@ CREATE TABLE forms (
     name character varying,
     website character varying,
     input_fields jsonb,
-    owner_id integer
+    owner_id integer,
+    redirect_url character varying
 );
 
 
@@ -518,4 +519,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160202015332');
 INSERT INTO schema_migrations (version) VALUES ('20160202015425');
 
 INSERT INTO schema_migrations (version) VALUES ('20160202034021');
+
+INSERT INTO schema_migrations (version) VALUES ('20160313054308');
 

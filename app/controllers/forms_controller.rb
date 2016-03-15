@@ -38,7 +38,7 @@ class FormsController < ApplicationController
 
   private
   def form_params
-    params.require(:form).permit(:name, :website, :input_fields, :output_ids => [])
+    params.require(:form).permit(:name, :website, :input_fields, :redirect_url, :output_ids => [])
   end
 
   def destroy
