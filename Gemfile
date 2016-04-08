@@ -138,6 +138,8 @@ gem 'prometheus-client'
 gem 'rack-protection'
 # caching
 gem 'rack-cache'
+# ssl redirect
+gem 'rack-ssl'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT

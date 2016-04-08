@@ -63,7 +63,7 @@ bin/rake db:seed
 ### Setting Up/Deploying to cloudfoundry
 Thanks to http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html
 ```
-cf create-service aws-rds-postgres 9.4-bronze backchat-db
+cf create-service DTO-staging-RDS-postgres 9.4-t2.micro-5G backchat-db
 cf push
 # https://docs.pivotal.io/pivotalcf/devguide/services/migrate-db.html
 cf set-env backchat SECRET_KEY_BASE `rake secret`

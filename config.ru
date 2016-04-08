@@ -1,11 +1,13 @@
 # This file is used by Rack-based servers to start the application.
 
 require ::File.expand_path('../config/environment',  __FILE__)
-
+require 'rack/ssl'
 # required password
 use Rack::Auth::Basic, 'Protected Area' do |username, password|
   (username == 'test' && password == 'test')
 end
+
+use Rack::SSL
 
 # gzip compression
 use Rack::Deflater
