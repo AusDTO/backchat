@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-curl -v 'http://test:test@localhost:3000/submit/2b6a0896-5b23-41da-add5-05caec30f3d5' \
+curl -v -k 'https://test:test@backchat.apps.staging.digital.gov.au/submit/2be6dc79-7c88-43ca-87cf-7fbfb7bc142f' \
   -F "userid=1" \
   -F "filecomment=This is an image file" \
   -F "file=@./app/assets/images/noun_36122.png" \

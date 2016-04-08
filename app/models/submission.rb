@@ -14,11 +14,13 @@ class Submission < ActiveRecord::Base
 
   def as_html
     output = ""
-    output += "ID: <a href='"+submission_url+"'>"+self.id+"</a><br>\n"
+    output += "ID: "+self.id+"</a><br>\n"
     output += "Submitted: "+self.created_at.to_s(:default)+"<br>\n"
     output +="<table>"
     for key in self.content.keys
-      output +="<tr><td><b>"+key+"</b></td><td>"+ self.content[key]+"</td></tr>"
+      if self.content[key]
+        output +="<tr><td><b>"+key+"</b></td><td>"+ self.content[key]+"</td></tr>"
+      end
     end
     output +="</table>"
     output
