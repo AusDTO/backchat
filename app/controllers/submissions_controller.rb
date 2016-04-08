@@ -28,6 +28,8 @@ class SubmissionsController < ApplicationController
     end
     if params[:file]
       @submission.file = params[:file]
+      #TODO save mime/type and/or filename https://github.com/refile/refile
+      params[:file] = nil
     end
     #TODO filter by expected input fields
     @submission.content = params.to_json

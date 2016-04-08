@@ -26,7 +26,9 @@ class FrameOptions < Rack::Protection::Base
 
   def call(env)
     status, headers, body        = @app.call(env)
-    headers['X-Frame-Options'] ||= frame_options if html? headers && !env["REQUEST_PATH"].start_with?("/submit")
+    if (html?(headers)) && !env["REQUEST_PATH"].start_with?("/submit")
+      headers['X-Frame-Options'] ||= frame_options
+    end
     [status, headers, body]
   end
 end

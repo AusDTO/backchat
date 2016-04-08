@@ -1,11 +1,11 @@
 # Backchat
 Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
 
-[![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg)](https://circleci.com/gh/AusDTO/backchat)
+[![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
 ## TODO
 - [ ]  Have input fields including uploaded files
-- [ ]  Have thank-you url option including referrer so users can get back to the page they were on
+- [ ]  Have validation and pretty names for fields
 
 ## Lifecycle of a submission
 Submission is received as HTTP POST form or JSON, user sent back to thankyou
