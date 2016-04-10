@@ -4,9 +4,9 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
 ## TODO
-- [ ]  Download files with original filename and mimetype
-- [ ]  Warning if you login via google and do not have a refresh_token to go to https://security.google.com/settings/security/permissions
-- [ ]  Have input fields including uploaded files
+- [ ]  Have defined input fields including uploaded files
+- [ ]  Generated forms based on defined fields
+- [ ]  Multiple file uploads?
 - [ ]  Have validation and pretty names for fields
 
 ## Lifecycle of a submission

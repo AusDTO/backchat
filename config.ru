@@ -7,7 +7,9 @@ use Rack::Auth::Basic, 'Protected Area' do |username, password|
   (username == 'test' && password == 'test')
 end
 
-use Rack::SSL
+if ENV['RACK_ENV'] == 'production'
+  use Rack::SSL
+end
 
 # gzip compression
 use Rack::Deflater
