@@ -20,9 +20,7 @@ deployment:
   production:
     branch: master
     commands:
-      - curl https://api.rollbar.com/api/1/deploy/ \
-          -F access_token=497d1be7481e46f08d8234a71fe08de6 \
-          -F environment=production \
-          -F revision=`git log -n 1 --pretty=format:"%H"`
+      - curl https://api.rollbar.com/api/1/deploy/ -F access_token=497d1be7481e46f08d8234a71fe08de6
+          -F environment=production -F revision=`git log -n 1 --pretty=format:"%H"`
           -F local_username=`whoami`
       - cf push
