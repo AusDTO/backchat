@@ -10,7 +10,10 @@ class SlackOutput < Output
       for key in submission.content.keys
         attachment.add_field(key, submission.content[key])
       end
-
+if self.configuration.nil?
+  {"success" => false, "result" => { 'msg' => "configuration missing or blank"}}
+  return
+end
       message = Slack::Message.new('Feedback', attachment)
       poster = Slack::Poster.new(self.configuration['webhook_url'])
       result = poster.send_message(message)

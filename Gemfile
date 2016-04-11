@@ -142,6 +142,7 @@ gem 'rack-cache'
 gem 'rack-ssl'
 #debugging
 gem 'rollbar', '~> 2.8.3'
+gem 'oj', '~> 2.12.14'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT
