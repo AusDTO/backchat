@@ -2,7 +2,7 @@
 applications:
 - name: backchat
   buildpack: ruby_buildpack
-  memory: 256M
+  memory: 512M
   instances: 1
   path: .
   command: bundle exec rake cf:on_first_instance db:migrate && exec bundle exec rails s -p $PORT -e $RAILS_ENV

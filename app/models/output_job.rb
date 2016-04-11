@@ -14,8 +14,13 @@ class OutputJob < ActiveRecord::Base
 
   def run
     r = self.output.run(self.submission)
-    self.success = r['success']
-    self.result = r['result']
+    if not r.nil?
+      self.success = r['success']
+      self.result = r['result']
+    else
+      self.success = false
+      self.result = {"msg"=>"nil result"}
+    end
     r
   end
 end
