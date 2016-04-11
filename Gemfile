@@ -140,6 +140,8 @@ gem 'rack-protection'
 gem 'rack-cache'
 # ssl redirect
 gem 'rack-ssl'
+#debugging
+gem 'rollbar', '~> 2.8.3'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT

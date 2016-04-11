@@ -3,9 +3,9 @@
 require ::File.expand_path('../config/environment',  __FILE__)
 require 'rack/ssl'
 # required password
-use Rack::Auth::Basic, 'Protected Area' do |username, password|
-  (username == 'test' && password == 'test')
-end
+#use Rack::Auth::Basic, 'Protected Area' do |username, password|
+#  (username == 'test' && password == 'test')
+#end
 
 if ENV['RACK_ENV'] == 'production'
   use Rack::SSL
