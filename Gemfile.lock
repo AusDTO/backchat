@@ -415,6 +415,7 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rails_12factor
   rails_serve_static_assets
+  rails_stdout_logging
   rb-fsevent (~> 0.9.6)
   refile
   refile-postgres

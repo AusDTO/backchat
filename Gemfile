@@ -11,6 +11,8 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'cf-app-utils'
 # http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html#rails-4
 gem 'rails_serve_static_assets'
+# https://github.com/heroku/rails_stdout_logging
+gem 'rails_stdout_logging'
 
 # =======================
 # RAILS CORE
