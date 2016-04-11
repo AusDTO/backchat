@@ -4,6 +4,7 @@ Unified user feedback/contact system allowing simple HTML form POSTs to become q
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
 ## TODO
+- [ ] Explain on form page how to integrate eg. submit url/form tag
 - [ ]  Have defined input fields including uploaded files
 - [ ]  Generated forms based on defined fields
 - [ ]  Multiple file uploads?

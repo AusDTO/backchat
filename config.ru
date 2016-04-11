@@ -24,7 +24,7 @@ use Prometheus::Client::Rack::Exporter
 # web application firewall
 use Rack::Session::Pool
 require 'rack/protection'
-use Rack::Protection, :except => :frame_options
+use Rack::Protection, :except => [:frame_options, :remote_token]
 
 # run the rails
 run Rails.application
