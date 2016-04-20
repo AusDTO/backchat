@@ -76,3 +76,7 @@ cf set-env backchat GOOGLE_CLIENT_ID '123'
 cf push -c "bundle exec rake db:structure:ar_load QUE_MODE=off QUE_WORKERS=0" #first time setup
 cf push
 ```
+
+## Copyright & License
+
+Copyright Digital Transformation Office. Licensed under the MIT license. See LICENSE file for more details.
