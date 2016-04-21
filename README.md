@@ -1,25 +1,7 @@
 # Backchat
-Unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.
-
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
-## TODO
-- [ ] Explain on form page how to integrate eg. submit url/form tag
-- [ ]  Have defined input fields including uploaded files
-- [ ]  Generated forms based on defined fields
-- [ ]  Multiple file uploads?
-- [ ]  Have validation and pretty names for fields
-
-## Lifecycle of a submission
-Submission is received as HTTP POST form or JSON, user sent back to thankyou
-
-Validated; does it match a form uuid, do the fields validate
-
-Store submission in DB
-
-Create output objects to track progress of submissions into other systems
-
-Create output jobs to action outputs asynchronously including for objects with no jobs
+Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, Zendesk, and Slack.
 
 
 ## Installing on OSX Development
