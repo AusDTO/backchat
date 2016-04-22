@@ -7,6 +7,8 @@ Backchat is in active development. However it is **alpha software** and not yet 
 
 ## Development
 
+* https://waffle.io/AusDTO/backchat
+
 ### Installing on OS X
 ```
 #install homebrew
