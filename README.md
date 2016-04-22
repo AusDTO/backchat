@@ -1,12 +1,15 @@
 # Backchat
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
-Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, Zendesk, and Slack.
+Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, [Zendesk](https://www.zendesk.com/), and [Slack](https://slack.com/).
 
+Backchat is in active development. However it is **alpha software** and not yet being used by the DTO on any production sites.
 
-## Installing on OSX Development
+## Development
+
+### Installing on OS X
 ```
-#install homebrew 
+#install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #install rbenv
 brew install rbenv ruby-build
@@ -45,7 +48,7 @@ bin/rake db:migrate
 bin/rake db:seed
 ```
 
-### Setting Up/Deploying to cloudfoundry
+### Setting Up / Deploying to Cloud Foundry
 Thanks to http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html
 ```
 cf create-service DTO-staging-RDS-postgres 9.4-t2.micro-5G backchat-db
