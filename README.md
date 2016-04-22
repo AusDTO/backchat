@@ -1,7 +1,7 @@
 # Backchat
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
-Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, Zendesk, and Slack.
+Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, [Zendesk](https://www.zendesk.com/), and [Slack](https://slack.com/).
 
 
 ## Installing on OSX Development
