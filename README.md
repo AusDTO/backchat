@@ -3,6 +3,7 @@
 
 Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, [Zendesk](https://www.zendesk.com/), and [Slack](https://slack.com/).
 
+Backchat is in active development. However it is **alpha software** and not yet being used by the DTO on any production sites.
 
 ## Installing on OSX Development
 ```
