@@ -5,9 +5,11 @@ Backchat is a system for enabling contact or feedback forms to be submitted from
 
 Backchat is in active development. However it is **alpha software** and not yet being used by the DTO on any production sites.
 
-## Installing on OSX Development
+## Development
+
+### Installing on OS X
 ```
-#install homebrew 
+#install homebrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 #install rbenv
 brew install rbenv ruby-build
@@ -46,7 +48,7 @@ bin/rake db:migrate
 bin/rake db:seed
 ```
 
-### Setting Up/Deploying to cloudfoundry
+### Setting Up / Deploying to Cloud Foundry
 Thanks to http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html
 ```
 cf create-service DTO-staging-RDS-postgres 9.4-t2.micro-5G backchat-db
