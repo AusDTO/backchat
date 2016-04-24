@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :forms
 
   get 'submissions/:id' => 'submissions#show', as: :submission
-  post 'submit/:id' => 'submissions#submit'
+  post 'submit/:id' => 'submissions#submit', as: :submit
 
   get 'outputs/jobs/:id' => 'output_jobs#show'
   get 'outputs/jobs/:id/run' => 'output_jobs#run'

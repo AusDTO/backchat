@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Github Issues Output Configuration",
+  "type": "object",
+  "required": [
+    "personal_access_key",
+    "repo_name",
+    "issue"
+  ],
+  "properties": {
+    "personal_access_key": {
+      "type": "string",
+      "description": "Personal access key for creating issues via https://github.com/settings/tokens"
+    },
+    "repo_name": {
+      "type": "string",
+      "description": "Repo name prefixed by owner eg. ausdto/dto.gov.au "
+    },
+    "issue": {
+      "description": "Template of the Github Issue created by this output",
+      "type": "object",
+      "required":[
+        "title"
+      ],
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Required. The title of the issue."
+        },
+        "assignee": {
+          "type": "string",
+          "description": "Login for the user that this issue should be assigned to. NOTE: Only users with push access can set the assignee for new issues. The assignee is silently dropped otherwise."
+        },
+        "milestone": {
+          "type": "string",
+          "description": "The number of the milestone to associate this issue with. NOTE: Only users with push access can set the milestone for new issues. The milestone is silently dropped otherwise."
+        },
+        "labels": {
+          "type": "array",
+          "description": "Labels to associate with this issue. NOTE: Only users with push access can set labels for new issues. Labels are silently dropped otherwise.",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

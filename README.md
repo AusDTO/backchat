@@ -1,6 +1,7 @@
 # Backchat
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
+
 Backchat is a system for enabling contact or feedback forms to be submitted from other websites and then passed on via various services such as email, [Zendesk](https://www.zendesk.com/), and [Slack](https://slack.com/).
 
 Backchat is in active development. However it is **alpha software** and not yet being used by the DTO on any production sites.
@@ -8,6 +9,14 @@ Backchat is in active development. However it is **alpha software** and not yet 
 ## Development
 
 * https://waffle.io/AusDTO/backchat
+
+## TODO
+- [ ] Have defined input fields with human readable titles and max length/size including uploaded files
+- [ ] Rate limiting for form submission
+- [ ] Add teams and team form ownership
+- [ ] Improve submission browsing including CSV download, filter, columns, expand out JSON etc.
+- [ ] Generated forms based on defined fields
+- [ ] Multiple file uploads?
 
 ### Installing on OS X
 ```

@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Trello Output Configuration",
+  "type": "object",
+  "required": [
+    "api_key",
+    "token",
+    "card"
+  ],
+  "properties": {
+    "api_key": {
+      "type": "string",
+      "description": "App API key, see https://trello.com/app-key"
+    },
+    "token": {
+      "type": "string",
+      "description": "App token, see https://trello.com/app-key"
+    },
+    "card": {
+      "description": "Template of the Trello card created by this output",
+      "type": "object",
+      "required":[
+        "name","idList","pos"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Title/name for new card"
+        },
+        "idList": {
+          "type": "string",
+          "description": "List/Column ID, see https://developers.trello.com/get-started/start-building#create"
+        },
+        "pos": {
+          "type": "string",
+          "description": "Position in column eg. 'top' or 'bottom'"
+        }
+      }
+    }
+  }
+}

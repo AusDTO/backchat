@@ -15,18 +15,23 @@ class GmailOutput < Output
         to configuration['to']
         subject configuration['subject']
       end
-      text_part = Mail::Part.new do
-        body submission.inspect
-      end
 
       html_part = Mail::Part.new do
         content_type 'text/html; charset=UTF-8'
         body submission.as_html
       end
 
-      mail.text_part = text_part
       mail.html_part = html_part
 
+      if configuration['files_allowed'] == 'Yes'
+        mail.attachments[submission.file_filename] = submission.file.read
+      end
+      if configuration['data_attached'] == 'CSV'
+        mail.attachments['data.csv'] = { :mime_type => 'text/csv',  :content => submission.as_csv }
+      end
+      if configuration['data_attached'] == 'JSON'
+        mail.attachments['data.json'] = { :mime_type => 'application/json',  :content => submission.to_json }
+      end
       result = gmail.send_user_message('me',
                                        upload_source: StringIO.new(mail.to_s),
                                        content_type: 'message/rfc822')
@@ -34,7 +39,7 @@ class GmailOutput < Output
       if result.id.nil?
         {"success" => false, "result" => {'msg' => result.inspect}}
       else
-        {"success" => true, "result" => {'id' => result.id}}
+        {"success" => true, "result" => {'id' => result.id, 'labels' => result.label_ids, 'threads' => result.thread_ids}}
       end
 
     rescue Exception => e

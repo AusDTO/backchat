@@ -1,3 +1,5 @@
+require 'csv'
+
 class Submission < ActiveRecord::Base
   belongs_to :form
   has_many :output_jobs
@@ -11,7 +13,16 @@ class Submission < ActiveRecord::Base
   def to_s
     self.id + " @ "+self.created_at.to_s(:default)
   end
-
+  def as_csv
+    row = self.as_json
+    row = row.merge(row['content'])
+    row = row.except("content")
+    csv_string = CSV.generate do |csv|
+      csv << row.keys
+      csv << row.values
+    end
+    csv_string
+  end
   def as_html
     output = ""
     output += "ID: "+self.id+"</a><br>\n"
@@ -32,7 +43,9 @@ class Submission < ActiveRecord::Base
     output += "Submitted: "+self.created_at.to_s(:default)+"\n"
 
     for key in self.content.keys
-      output +=key+": "+ self.content[key]+"\n"
+      if self.content[key]
+        output +=key+": "+ self.content[key]+"\n"
+      end
     end
     output
   end

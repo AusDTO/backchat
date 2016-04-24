@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Generic Webhook Configuration",
+  "type": "object",
+  "required": ["webhook_url"],
+  "properties": {
+    "webhook_url": {
+      "type": "string",
+      "description": "Webhook URL"
+    }
+
+  }
+}

@@ -1,4 +1,17 @@
 <h1>Edit "<%= @form.name %>"</h1>
+
+<% if @form.id %>
+    <p class="bg-info">
+      You can integrate this form into an existing HTML website:<br/>
+      <code>
+        &lt;form action=&quot;<%=submit_url(@form.id) %>&quot; method=&quot;post&quot;&gt;<br/>
+        &lt;input type=&quot;hidden&quot; name=&quot;referrer&quot; value=&quot;&quot;/&gt;&lt;!- page user came from -&gt;<br/>
+        &lt;input type=&quot;hidden&quot; name=&quot;satisfaction&quot; value=&quot;&quot;/&gt;&lt;!- satisfaction from 0 to 100 -&gt;<br/>
+        &lt;INPUT TYPE=FILE NAME=&quot;file&quot;&gt; &lt;!- can attach a file called file -&gt;<br/>        &lt;/form&gt;
+      </code>
+    </p>
+    <% end %>
+
 <%= bootstrap_form_for @form do |f| %>
     <%= f.text_field :name %>
     <%= f.text_field :website, label: "Website/Property" %>
