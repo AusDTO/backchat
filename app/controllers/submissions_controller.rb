@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   # allow external post for submit
   skip_before_action :verify_authenticity_token, only: [:submit]
+  after_action :allow_iframe, only: :submit
   before_filter :start_counter
   def start_counter
     if not $feedback_received
@@ -50,5 +51,9 @@ class SubmissionsController < ApplicationController
         render json: @submission.to_json
       end
     end
+  end
+  private
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
   end
 end

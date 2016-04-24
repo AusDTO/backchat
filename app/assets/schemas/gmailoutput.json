@@ -13,6 +13,23 @@
     "subject": {
       "type": "string",
       "description": "Email Subject"
+    },
+    "files_allowed": {
+      "type": "string",
+      "enum": [
+        "Yes",
+        "No"
+      ],
+      "description": "Allow file attachments"
+    },
+    "data_attached": {
+      "type": "string",
+      "enum": [
+        "No data attachment",
+        "CSV",
+        "JSON"
+      ],
+      "description": "Attach data as CSV/JSON"
     }
 
   }
