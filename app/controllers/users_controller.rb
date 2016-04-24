@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # After login go here
   def index
     if @user.admin
+      @users = User.all
       @forms = Form.all
       @outputs = Output.all
     else
@@ -26,8 +27,12 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/:id.:format
   def update
     authorize! :update, @user
+    p = user_params
+    if current_user.is_admin?
+      @user = User.find(params[:id])
+    end
     respond_to do |format|
-      if @user.update(user_params)
+      if @user.update(p)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
         format.html { redirect_to root_path, notice: 'Your profile was successfully updated.' }
         format.json { head :no_content }
@@ -82,6 +87,9 @@ class UsersController < ApplicationController
   def user_params
     accessible = [:name, :email] # extend with your own params
     accessible << [:password, :password_confirmation] unless params[:user][:password].blank?
+    if current_user.is_admin?
+      accessible << [:approved, :id]
+    end
     params.require(:user).permit(accessible)
   end
 

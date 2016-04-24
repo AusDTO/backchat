@@ -285,7 +285,8 @@ CREATE TABLE users (
     name character varying,
     admin boolean DEFAULT false,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    approved boolean DEFAULT false NOT NULL
 );
 
 
@@ -479,6 +480,13 @@ CREATE INDEX index_submissions_on_form_id ON submissions USING btree (form_id);
 
 
 --
+-- Name: index_users_on_approved; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_users_on_approved ON users USING btree (approved);
+
+
+--
 -- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
 --
 
@@ -527,4 +535,6 @@ INSERT INTO schema_migrations (version) VALUES ('20160202015332');
 INSERT INTO schema_migrations (version) VALUES ('20160202015425');
 
 INSERT INTO schema_migrations (version) VALUES ('20160202034021');
+
+INSERT INTO schema_migrations (version) VALUES ('20160419112224');
 

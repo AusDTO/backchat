@@ -2,9 +2,9 @@ User.delete_all
 
 User.create!([
                  {id: 1, email: "admin@example.com", password: 'password',
-                  password_confirmation: 'password', admin: true},
+                  password_confirmation: 'password', admin: true, approved: true},
                  {id: 2,email: "user@example.com", password: 'password',
-                  password_confirmation: 'password', admin: false}
+                  password_confirmation: 'password', admin: false, approved: true}
 ])
 #SELECT setval('users_id_seq',3);
 ActiveRecord::Base.connection.execute("SELECT setval('users_id_seq', 3);")

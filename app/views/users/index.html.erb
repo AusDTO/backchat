@@ -1,4 +1,7 @@
 <h1 class="page-header">Dashboard</h1>
 
+<% if @user.is_admin? %>
+<%= render 'users/list' %>
+<% end %>
 <%= render 'forms/index' %>
 <%= render 'outputs/index' %>

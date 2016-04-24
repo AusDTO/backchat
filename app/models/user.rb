@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
             #username: auth.info.nickname || auth.uid,
             email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
             password: Devise.friendly_token[0, 20],
+            approved: (auth.provider == 'google'),
             admin: (email == 'alex.sadleir@digital.gov.au')
         )
         #user.skip_confirmation!
@@ -75,5 +76,16 @@ class User < ActiveRecord::Base
     self.admin
   end
 
+  def active_for_authentication?
+    super && approved?
+  end
+
+  def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
   protected
 end

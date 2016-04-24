@@ -1,11 +1,20 @@
 <h2>Edit Profile Info</h2>
-
+<% if @user.is_admin? %>
+<% @user = User.find(params[:id]) %>
+<% end %>
 <%= bootstrap_form_for(@user, url: user_path(id: @user.id), html: { method: :put }) do |f| %>
 
   <div class="field">
     <%= f.text_field :name %>
   </div>
-
+    <div class="field">
+      <%= f.text_field :email %>
+    </div>
+    <% if current_user.is_admin? %>
+    <div class="field">
+      <%= f.check_box :approved %>
+    </div>
+    <% end %>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

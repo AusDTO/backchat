@@ -1,0 +1,25 @@
+
+<h2 class="sub-header">Your Users</h2>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Email</th>
+      <th>Approved</th>
+      <th>Edit</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.approved %></td>
+          <td><%= link_to "Edit", edit_user_path(user) %></td>
+        </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>
