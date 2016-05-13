@@ -6,6 +6,7 @@ FactoryGirl.define do
   	email 		{Faker::Internet.email}
   	admin			false
 		password 	{Faker::Internet.password(min_length = 8)}
+    approved  true
 
 		factory :owner do
 			admin 		true
