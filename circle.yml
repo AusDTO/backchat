@@ -11,10 +11,9 @@ dependencies:
 
 test:
   post:
-    - cf api https://api.system.staging.digital.gov.au --skip-ssl-validation
+    - cf api https://api.system.staging.digital.gov.au
     - cf auth $CF_USER $CF_PASSWORD
     - cf target -o dto -s dtomisc
-    - cf apps
 
 deployment:
   production:
