@@ -11,11 +11,11 @@ Backchat is in active development. However it is **alpha software** and not yet 
 * https://waffle.io/AusDTO/backchat
 
 ## TODO
-- [ ] Have defined input fields with human readable titles and max length/size including uploaded files
-- [ ] Rate limiting for form submission
 - [ ] Add teams and team form ownership
 - [ ] Improve submission browsing including CSV download, filter, columns, expand out JSON etc.
 - [ ] Generated forms based on defined fields
+- [ ] Have defined input fields with human readable titles and max length/size including uploaded files
+- [ ] Rate limiting for form submission
 - [ ] Multiple file uploads?
 
 ### Installing on OS X
@@ -71,6 +71,8 @@ cf set-env backchat GOOGLE_CLIENT_ID '123'
 
 cf push -c "bundle exec rake db:structure:ar_load QUE_MODE=off QUE_WORKERS=0" #first time setup
 cf push
+# http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html#workers + https://github.com/chanks/que
+cf push -f worker-manifest.yml
 ```
 
 ## Copyright & License

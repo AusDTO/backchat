@@ -1,0 +1,11 @@
+---
+applications:
+- name: backchat-worker
+  buildpack: ruby_buildpack
+  memory: 512M
+  instances: 1
+  path: .
+  no-route: true
+  command: exec bundle exec que  ./config/environment.rb
+  services:
+    - backchat-db
