@@ -57,17 +57,11 @@ gem 'rest-client'
 # =======================
 # UI GEMS
 # =======================
-
+gem 'haml'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Use Bootstrap Offical Sass Port
-gem 'bootstrap-sass', '~> 3.3.0'
-# bootstrap form theme
-gem 'bootstrap_form'
-# Use FontAwesome Offical Sass Port
-gem 'font-awesome-sass', '~> 4.5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -98,6 +92,7 @@ group :development do
   # better error page
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'rubyzip', '>= 1.0.0'
 end
 group :development, :test do
 	# Test Framework we are using

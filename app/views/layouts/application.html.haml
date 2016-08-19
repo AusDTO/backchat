@@ -1,0 +1,46 @@
+
+!!! 5
+<!--[if IE]><![endif]-->
+<!--[if lt IE 7 ]>
+<html lang="en-AU" class="ie6 no-js">    <![endif]-->
+<!--[if IE 7 ]>
+<html lang="en-AU" class="ie7 no-js">    <![endif]-->
+<!--[if IE 8 ]>
+<html lang="en-AU" class="ie8 no-js">    <![endif]-->
+<!--[if IE 9 ]>
+<html lang="en-AU" class="ie9 no-js">    <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en-AU" class="no-js"><!--<![endif]-->
+
+= render 'application/head',  title: (content_for?(:title) ? "#{yield(:title)} | Backchat" : 'Backchat' )
+%body
+  %div.skip-to
+    %a{href: "#content"}
+      Skip to main content
+  %header{role: 'banner'}
+    = render 'layouts/partials/dashboard/nav'
+    %section.govau--header
+      - if content_for?(:header)
+        = yield(:header)
+      - else
+      .wrapper
+        .govau--logo
+        %a{href: "/", class: "logo"}
+          backchat
+          %span.badge--default
+            alpha
+        .feedback
+          %a.button--feedback{href:"https://github.com/AusDTO/backchat/issues/new", role:"button"}
+            Give feedback
+
+  = yield(:after_header)
+
+  %main
+    = render 'application/alerts'
+    = yield
+  %footer{role: "contentinfo"}
+    .wrapper
+      %section
+</html>
+
+

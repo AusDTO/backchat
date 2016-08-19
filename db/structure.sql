@@ -2,16 +2,12 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.5.2
--- Dumped by pg_dump version 9.5.2
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SET check_function_bodies = false;
 SET client_min_messages = warning;
-SET row_security = off;
 
 --
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: -
@@ -34,22 +30,21 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: forms; Type: TABLE; Schema: public; Owner: -
+-- Name: forms; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE forms (
     id character varying NOT NULL,
     name character varying,
     website character varying,
-    redirect_url character varying,
-    allow_file boolean,
     input_fields jsonb,
-    owner_id integer
+    owner_id integer,
+    redirect_url character varying
 );
 
 
 --
--- Name: forms_outputs; Type: TABLE; Schema: public; Owner: -
+-- Name: forms_outputs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE forms_outputs (
@@ -59,7 +54,7 @@ CREATE TABLE forms_outputs (
 
 
 --
--- Name: global_configs; Type: TABLE; Schema: public; Owner: -
+-- Name: global_configs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE global_configs (
@@ -98,7 +93,7 @@ ALTER SEQUENCE global_configs_id_seq OWNED BY global_configs.id;
 
 
 --
--- Name: identities; Type: TABLE; Schema: public; Owner: -
+-- Name: identities; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE identities (
@@ -136,7 +131,7 @@ ALTER SEQUENCE identities_id_seq OWNED BY identities.id;
 
 
 --
--- Name: output_jobs; Type: TABLE; Schema: public; Owner: -
+-- Name: output_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE output_jobs (
@@ -151,7 +146,7 @@ CREATE TABLE output_jobs (
 
 
 --
--- Name: outputs; Type: TABLE; Schema: public; Owner: -
+-- Name: outputs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE outputs (
@@ -164,7 +159,7 @@ CREATE TABLE outputs (
 
 
 --
--- Name: que_jobs; Type: TABLE; Schema: public; Owner: -
+-- Name: que_jobs; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE que_jobs (
@@ -206,7 +201,7 @@ ALTER SEQUENCE que_jobs_job_id_seq OWNED BY que_jobs.job_id;
 
 
 --
--- Name: refile_attachments; Type: TABLE; Schema: public; Owner: -
+-- Name: refile_attachments; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE refile_attachments (
@@ -235,7 +230,7 @@ ALTER SEQUENCE refile_attachments_id_seq OWNED BY refile_attachments.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -244,7 +239,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: submissions; Type: TABLE; Schema: public; Owner: -
+-- Name: submissions; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE submissions (
@@ -254,16 +249,13 @@ CREATE TABLE submissions (
     path character varying,
     satisfaction numeric(3,0),
     file_id character varying,
-    file_filename character varying,
-    file_size integer,
-    file_content_type character varying,
     content jsonb,
     form_id character varying
 );
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -345,7 +337,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: forms_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY forms
@@ -353,7 +345,7 @@ ALTER TABLE ONLY forms
 
 
 --
--- Name: global_configs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: global_configs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY global_configs
@@ -361,7 +353,7 @@ ALTER TABLE ONLY global_configs
 
 
 --
--- Name: identities_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: identities_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY identities
@@ -369,7 +361,7 @@ ALTER TABLE ONLY identities
 
 
 --
--- Name: output_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: output_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY output_jobs
@@ -377,7 +369,7 @@ ALTER TABLE ONLY output_jobs
 
 
 --
--- Name: outputs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: outputs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY outputs
@@ -385,7 +377,7 @@ ALTER TABLE ONLY outputs
 
 
 --
--- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: que_jobs_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY que_jobs
@@ -393,7 +385,7 @@ ALTER TABLE ONLY que_jobs
 
 
 --
--- Name: refile_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: refile_attachments_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY refile_attachments
@@ -401,7 +393,7 @@ ALTER TABLE ONLY refile_attachments
 
 
 --
--- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: submissions_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY submissions
@@ -409,7 +401,7 @@ ALTER TABLE ONLY submissions
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -417,98 +409,98 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_forms_on_owner_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_forms_on_owner_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_forms_on_owner_id ON forms USING btree (owner_id);
 
 
 --
--- Name: index_forms_outputs_on_form_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_forms_outputs_on_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_forms_outputs_on_form_id ON forms_outputs USING btree (form_id);
 
 
 --
--- Name: index_forms_outputs_on_output_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_forms_outputs_on_output_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_forms_outputs_on_output_id ON forms_outputs USING btree (output_id);
 
 
 --
--- Name: index_identities_on_user_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_identities_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_identities_on_user_id ON identities USING btree (user_id);
 
 
 --
--- Name: index_output_jobs_on_output_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_output_jobs_on_output_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_output_jobs_on_output_id ON output_jobs USING btree (output_id);
 
 
 --
--- Name: index_output_jobs_on_submission_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_output_jobs_on_submission_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_output_jobs_on_submission_id ON output_jobs USING btree (submission_id);
 
 
 --
--- Name: index_outputs_on_owner_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_outputs_on_owner_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_outputs_on_owner_id ON outputs USING btree (owner_id);
 
 
 --
--- Name: index_refile_attachments_on_namespace; Type: INDEX; Schema: public; Owner: -
+-- Name: index_refile_attachments_on_namespace; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_refile_attachments_on_namespace ON refile_attachments USING btree (namespace);
 
 
 --
--- Name: index_submissions_on_form_id; Type: INDEX; Schema: public; Owner: -
+-- Name: index_submissions_on_form_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_submissions_on_form_id ON submissions USING btree (form_id);
 
 
 --
--- Name: index_users_on_approved; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_approved; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_users_on_approved ON users USING btree (approved);
 
 
 --
--- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_confirmation_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_confirmation_token ON users USING btree (confirmation_token);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -518,7 +510,7 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 -- PostgreSQL database dump complete
 --
 
-SET search_path TO "$user", public;
+SET search_path TO "$user",public;
 
 INSERT INTO schema_migrations (version) VALUES ('20150126180608');
 
@@ -535,6 +527,8 @@ INSERT INTO schema_migrations (version) VALUES ('20160202015332');
 INSERT INTO schema_migrations (version) VALUES ('20160202015425');
 
 INSERT INTO schema_migrations (version) VALUES ('20160202034021');
+
+INSERT INTO schema_migrations (version) VALUES ('20160313054308');
 
 INSERT INTO schema_migrations (version) VALUES ('20160419112224');
 

@@ -12,12 +12,16 @@
     </p>
     <% end %>
 
-<%= bootstrap_form_for @form do |f| %>
+<%= form_for @form do |f| %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.text_field :website, label: "Website/Property" %>
-    <%= f.text_field :redirect_url, label: "URL to redirect to after submission" %>
+    <%= f.label :website, "Website/Property" %>
+    <%= f.text_field :website %>
+    <%= f.label :redirect_url, "URL to redirect to after submission" %>
+    <%= f.text_field :redirect_url %>
+    <%= f.label :output_ids, "Outputs:" %>
     <%= f.collection_check_boxes :output_ids, Output.all, :id, :name%>
-    <textarea class="form-control hidden" name="form[input_fields]" id="form_input_fields">
+    <textarea class="is-visuallyhidden" name="form[input_fields]" id="form_input_fields">
       </textarea>
     <div id='editor_holder'></div>
     <%= f.submit "Save" %>
@@ -46,7 +50,6 @@
         $ref: "<%= asset_path('inputfields.json') %>",
         format: "grid"
       },
-      theme: 'bootstrap3',
       disable_properties: true,
       <% if @form.id %>
       // Seed the form with a starting value

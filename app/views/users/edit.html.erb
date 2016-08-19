@@ -2,16 +2,19 @@
 <% if @user.is_admin? %>
 <% @user = User.find(params[:id]) %>
 <% end %>
-<%= bootstrap_form_for(@user, url: user_path(id: @user.id), html: { method: :put }) do |f| %>
+<%= form_for(@user, url: user_path(id: @user.id), html: { method: :put }) do |f| %>
 
   <div class="field">
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
     <div class="field">
+      <%= f.label :email %>
       <%= f.text_field :email %>
     </div>
     <% if current_user.is_admin? %>
     <div class="field">
+      <%= f.label :approved %>
       <%= f.check_box :approved %>
     </div>
     <% end %>

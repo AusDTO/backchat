@@ -1,8 +1,11 @@
 <h1>Edit "<%= @output.name %>"</h1>
-<%= bootstrap_form_for @output, as: :output, url: output_path(@output) do |f| %>
+<%= form_for @output, as: :output, url: output_path(@output) do |f| %>
+    <%= f.label :name %>
     <%= f.text_field :name %>
-    <%= f.static_control :type %>
-    <textarea class="form-control hidden" name="output[configuration]" id="configuration">
+
+    <%= f.label :type %>
+    <%= f.text_field :type, disabled: true %>
+    <textarea class="is-visuallyhidden" name="output[configuration]" id="configuration">
       </textarea>
     <div id='editor_holder'></div>
     <%= f.submit "Save" %>
@@ -23,7 +26,6 @@
         $ref: "<%= asset_path(@output.type.downcase+'.json') %>",
         format: "grid"
       },
-      theme: 'bootstrap3',
       disable_properties: true,
       // Seed the form with a starting value
       startval: startval

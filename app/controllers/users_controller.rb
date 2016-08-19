@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  layout :resolve_layout #Before rendering check which layout we should show
   before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
 
   # After login go here
@@ -94,13 +93,4 @@ class UsersController < ApplicationController
   end
 
 
-  # Determine layout based on action name
-  def resolve_layout
-    case action_name
-      when 'index'
-        'dashboard'
-      else
-        'application'
-    end
-  end
 end

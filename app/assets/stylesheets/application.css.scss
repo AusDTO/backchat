@@ -10,22 +10,5 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require rails_bootstrap_forms
  */
-
-/* BOOTSTRAP */
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-/* FONTAWESOME */
-@import "font-awesome-sprockets";
-@import "font-awesome";
-
-// LANDING PAGE
-@import "landing-page";
-
-// DASHBOARD LAYOUT
-@import "dashboard";
-
-body {padding-top: 50px;}
-.form-control {width: 50%};
+@import "ui-kit";
