@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
       identity.save!
     end
     if identity.refresh_token.nil?
-      set_flash_message(:error, "You logged in via Google but the API setup did not complete. go to https://security.google.com/settings/security/permissions and revoke this app's access")
+      flash[:error] = "You logged in via Google but the API setup did not complete. go to https://security.google.com/settings/security/permissions and revoke this app's access"
     end
     user
   end

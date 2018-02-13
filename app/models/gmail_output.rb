@@ -23,9 +23,9 @@ class GmailOutput < Output
 
       mail.html_part = html_part
 
-      if configuration['files_allowed'] == 'Yes'
-        mail.attachments[submission.file_filename] = submission.file.read
-      end
+      #if configuration['files_allowed'] == 'Yes'
+      #  mail.attachments[submission.file_filename] = submission.file.read
+      #end
       if configuration['data_attached'] == 'CSV'
         mail.attachments['data.csv'] = { :mime_type => 'text/csv',  :content => submission.as_csv }
       end

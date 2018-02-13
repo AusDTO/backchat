@@ -8,7 +8,7 @@ APP_CONFIG = YAML.load_file("config/global_config.yml")
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-require_relative '../lib/middleware/frame_options'
+
 module Backchat
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -22,7 +22,7 @@ module Backchat
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
-    config.middleware.use FrameOptions
+
     config.active_job.queue_adapter= :que
     config.active_record.schema_format = :sql
     # Tell Rails to use rspec and factory girl

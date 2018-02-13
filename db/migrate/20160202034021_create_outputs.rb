@@ -1,4 +1,4 @@
-class CreateOutputs < ActiveRecord::Migration
+class CreateOutputs < ActiveRecord::Migration[4.2]
   def change
     create_table :outputs, id: :string do |t|
       t.string :name, required: true

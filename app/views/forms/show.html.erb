@@ -14,7 +14,7 @@ Input Fields:
     </thead>
     <tbody>
     <% if not @form.input_fields.nil? %>
-    <% @form.input_fields.each do |input| %>
+    <% JSON.load(@form.input_fields).each do |input| %>
         <tr>
           <td><%= input['name'] %></td>
         </tr>

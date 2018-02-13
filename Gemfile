@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
+ruby '2.5.0'
 
 # =======================
 # CONFIG 
@@ -19,11 +19,11 @@ gem 'rails_stdout_logging'
 # =======================
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'pg', '~> 0.21.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.3.0'
+gem 'jbuilder', '~> 2.7.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 #gem 'sdoc', '~> 0.4.1',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -66,16 +66,8 @@ gem 'turbolinks'
 gem 'sass-rails', '~> 5.0.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '~> 2.7.0'
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
 # Compress css to inline styles for HTML emails
 gem 'roadie-rails'
-# file attachment
-gem "refile", require: "refile/rails"
-gem 'refile-postgres'
-# datatable
-gem 'jquery-datatables-rails'
-gem 'ajax-datatables-rails'
 
 # =======================
 # JOB QUEUE GEMS
@@ -92,13 +84,13 @@ group :development do
   # better error page
   gem "better_errors"
   gem "binding_of_caller"
-  gem 'rubyzip', '>= 1.0.0'
+  gem 'rubyzip', '>= 1.2.1'
 end
 group :development, :test do
 	# Test Framework we are using
-  gem "rspec-rails", "~> 3.4.0"
+  gem "rspec-rails", "~> 3.7.2"
   # Fixtures replacement
-  gem "factory_girl_rails", "~> 4.5.0"
+  gem "factory_bot_rails", "~> 4.8.2"
   # Make sure seeds only run in development
   gem "seedbank"
 end
@@ -138,15 +130,15 @@ gem 'rack-cache'
 # ssl redirect
 gem 'rack-ssl'
 #debugging
-gem 'rollbar', '~> 2.8.3'
-gem 'oj', '~> 2.12.14'
+gem 'rollbar', '~> 2.15.5'
+gem 'oj', '~> 3.4.0'
 
 # =======================
 # LIVE RELOAD FOR DEVELOPMENT
 # =======================
 
 group :development do
-  gem 'guard',            '~> 2.13.0',  :require => false
+  gem 'guard',            '~> 2.14.0',  :require => false
   gem 'guard-livereload', '~> 2.5.0',   :require => false
   gem 'rack-livereload',  '~> 0.3.16'
   gem 'rb-fsevent',       '~> 0.9.6',   :require => false

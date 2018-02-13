@@ -3,7 +3,7 @@ require 'csv'
 class Submission < ActiveRecord::Base
   belongs_to :form
   has_many :output_jobs
-  attachment :file
+  #has_one_attached :file
   before_create :generate_uuid, unless: :id
 
   def generate_uuid

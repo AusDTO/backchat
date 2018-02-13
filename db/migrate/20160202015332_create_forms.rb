@@ -1,5 +1,5 @@
 
-class CreateForms < ActiveRecord::Migration
+class CreateForms < ActiveRecord::Migration[4.2]
   def change
     create_table :forms, id: :string do |t|
       t.string 'name', required: true

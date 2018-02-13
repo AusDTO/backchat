@@ -15,11 +15,11 @@ end
 use Rack::Deflater
 
 # metrics
-require 'prometheus/client/rack/collector'
-require 'prometheus/client/rack/exporter'
+require 'prometheus/middleware/collector'
+require 'prometheus/middleware/exporter'
 
-use Prometheus::Client::Rack::Collector
-use Prometheus::Client::Rack::Exporter
+use Prometheus::Middleware::Collector
+use Prometheus::Middleware::Exporter
 
 # web application firewall
 use Rack::Session::Pool

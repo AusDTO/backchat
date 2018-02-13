@@ -1,4 +1,4 @@
-class CreateGlobalConfigs < ActiveRecord::Migration
+class CreateGlobalConfigs < ActiveRecord::Migration[4.2]
   def change
     create_table :global_configs do |t|
 
