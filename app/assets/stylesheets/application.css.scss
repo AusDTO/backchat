@@ -11,4 +11,8 @@
  * file per style scope.
  *
  */
-@import "ui-kit";
+@import "pancake.min";
+
+.header, .header a {
+  color:white !important;
+}

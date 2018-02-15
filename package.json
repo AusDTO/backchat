@@ -1,0 +1,51 @@
+{
+	"pancake": {
+		"auto-save": true,
+		"plugins": true,
+		"ignore": [],
+		"css": {
+			"minified": true,
+			"modules": false,
+			"browsers": [
+				"last 2 versions",
+				"ie 8",
+				"ie 9",
+				"ie 10"
+			],
+			"location": "vendor/assets/stylesheets",
+			"name": "pancake.min.css"
+		},
+		"sass": {
+			"modules": false,
+			"location": "vendor/assets/stylesheets",
+			"name": "pancake.scss"
+		},
+		"react": {
+			"location": "vendor/assets/javascripts"
+		},
+		"js": {
+			"minified": true,
+			"modules": false,
+			"location": "vendor/assets/javascripts",
+			"name": "pancake.min.js"
+		}
+	},
+	"dependencies": {
+		"@gov.au/accordion": "^0.3.0",
+		"@gov.au/body": "^0.1.2",
+		"@gov.au/buttons": "^0.5.0",
+		"@gov.au/callout": "^0.3.0",
+		"@gov.au/control-input": "^0.3.0",
+		"@gov.au/cta-link": "^0.3.0",
+		"@gov.au/footer": "^0.3.0",
+		"@gov.au/grid-12": "^0.1.1",
+		"@gov.au/header": "^1.2.0",
+		"@gov.au/headings": "^0.3.0",
+		"@gov.au/inpage-nav": "^0.3.0",
+		"@gov.au/link-list": "^0.3.0",
+		"@gov.au/page-alerts": "^0.3.0",
+		"@gov.au/responsive-media": "^0.1.1",
+		"@gov.au/skip-link": "^0.3.0",
+		"@gov.au/text-inputs": "^0.1.1"
+	}
+}

@@ -13,5 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require "ui-kit"
+//= require pancake.min
 //= require_tree .
