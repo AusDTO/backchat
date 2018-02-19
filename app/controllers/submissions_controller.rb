@@ -2,7 +2,7 @@ class SubmissionsController < ApplicationController
   # allow external post for submit
   skip_before_action :verify_authenticity_token, only: [:submit]
   after_action :allow_iframe, only: :submit
-  before_filter :start_counter
+  before_action :start_counter
   def start_counter
     if not $feedback_received
       $feedback_received = Prometheus::Client.registry.counter(:feedback_received, 'A counter of feedback submissions received')

@@ -3,7 +3,7 @@
 <% for (key,value) in @submission.attributes %>
     <tr><td><b><%=key%></b></td><td><%=value%></td></tr>
 <% end %>
-  <% if @submission.file %>
-  <%=link_to "Download Attachment",url_for(@submission.file) %>
-    <% end %>
+  <%# if @submission.file %>
+  <%#=link_to "Download Attachment",url_for(@submission.file) %>
+    <%# end %>
 </table>

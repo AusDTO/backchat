@@ -16,7 +16,7 @@ Backchat is in active development. However it is **alpha software** and not yet 
 - [ ] Generated forms based on defined fields
 - [ ] Have defined input fields with human readable titles and max length/size including uploaded files
 - [ ] Rate limiting for form submission
-- [ ] Multiple file uploads?
+- [ ] Re-enable file uploads http://edgeguides.rubyonrails.org/active_storage_overview.html
 
 ### Installing on OS X
 ```

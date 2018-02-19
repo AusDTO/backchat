@@ -14,15 +14,28 @@ Input Fields:
     </thead>
     <tbody>
     <% if not @form.input_fields.nil? %>
-    <% JSON.load(@form.input_fields).each do |input| %>
+      <% JSON.load(@form.input_fields).each do |input| %>
         <tr>
           <td><%= input['name'] %></td>
         </tr>
-        <% end %>
-        <% end %>
+      <% end %>
+    <% end %>
     </tbody>
   </table>
 </div>
+
+<% if @form.id %>
+  <p class="uikit-callout">
+    You can integrate this form into an existing HTML website:<br/>
+    <code>
+      &lt;form action=&quot;<%= submit_url(@form.id) %>&quot; method=&quot;post&quot;&gt;<br/>
+      &lt;input type=&quot;hidden&quot; name=&quot;referrer&quot; value=&quot;&quot;/&gt;&lt;!- page user came from -&gt;<br/>
+      &lt;input type=&quot;hidden&quot; name=&quot;satisfaction&quot; value=&quot;&quot;/&gt;&lt;!- satisfaction from 0
+      to 100 -&gt;<br/>
+      &lt;INPUT TYPE=FILE NAME=&quot;file&quot;&gt; &lt;!- can attach a file called file -&gt;<br/> &lt;/form&gt;
+    </code>
+  </p>
+<% end %>
 
 Outputs:
 <div class="table-responsive">
@@ -35,16 +48,16 @@ Outputs:
     </tr>
     </thead>
     <tbody>
-<% @form.outputs.each do |output| %>
-    <tr>
-      <td><%= link_to output.name, output_path(output) %></td>
-      <td><%= output.type %></td>
+    <% @form.outputs.each do |output| %>
+      <tr>
+        <td><%= link_to output.name, output_path(output) %></td>
+        <td><%= output.type %></td>
 
-    </tr>
-<% end %>
-</tbody>
-</table>
-  </div>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 Recent Submissions:
 <div class="table-responsive">
@@ -59,12 +72,12 @@ Recent Submissions:
     <tbody>
 
     <% @form.submissions.limit(10).order(created_at: :desc).each do |submission| %>
-        <tr>
-          <td><%= link_to submission.created_at, submission %></td>
-          <td><%= submission.content %></td>
+      <tr>
+        <td><%= link_to submission.created_at, submission %></td>
+        <td><%= submission.content %></td>
 
-        </tr>
-        <% end %>
+      </tr>
+    <% end %>
 
     </tbody>
   </table>

@@ -4,6 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :email, "Email address" %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -12,14 +13,17 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :password, "New Password" %>
     <%= f.password_field :password, autocomplete: "off", help: "(leave blank if you don't want to change it)" %>
   </div>
 
   <div class="field">
+    <%= f.label :password_confirmation, "New Password confirmation" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
+    <%= f.label :current_password, "Current Password" %>
     <%= f.password_field :current_password, autocomplete: "off", help: "(we need your current password to confirm your changes)" %>
   </div>
 

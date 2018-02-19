@@ -4,6 +4,7 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :email, "Email address" %>
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -11,10 +12,12 @@
     <% if @validatable %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
+    <%= f.label :password, "Password" %>
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
+    <%= f.label :password_confirmation, "Password confirmation" %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 

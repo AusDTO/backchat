@@ -1,6 +1,6 @@
 <h1>New Output</h1>
 <%= form_for @output, as: :output, url: outputs_path(@output) do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
     <%= f.label :type, "Output type:" %>
     <%= f.select :type, [["Gmail", "GmailOutput"], ["Zendesk","ZendeskOutput"], ["Slack","SlackOutput"],["Trello","TrelloOutput"],["Github Issues","GithubIssuesOutput"],["Generic Webhook","WebhookOutput"]],

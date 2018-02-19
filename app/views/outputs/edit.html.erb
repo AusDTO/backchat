@@ -1,9 +1,9 @@
 <h1>Edit "<%= @output.name %>"</h1>
 <%= form_for @output, as: :output, url: output_path(@output) do |f| %>
-    <%= f.label :name %>
+    <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
 
-    <%= f.label :type %>
+    <%= f.label :type, "Type" %>
     <%= f.text_field :type, disabled: true %>
     <textarea class="is-visuallyhidden" name="output[configuration]" id="configuration">
       </textarea>

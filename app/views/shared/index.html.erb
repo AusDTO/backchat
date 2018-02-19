@@ -21,7 +21,7 @@
 	        <h1 class="cover-heading">Welcome</h1>
 	        <p class="lead">Backchat is a unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.<p class="lead">
 	          <% if !current_user %>
-	          	<%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %> <%= link_to "Sign In", new_user_session_path, class: "btn btn-default" %>
+	          	<%= link_to "Sign Up", new_user_registration_path, class: "uikit-btn uikit-btn--dark" %> <%= link_to "Sign In", new_user_session_path, class: "uikit-btn uikit-btn--secondary uikit-btn--dark" %>
 						<% else %>
 							<h3>Welcome <%= current_user.email %></h3>
 							<p><%= link_to "Update Profile", edit_user_path(id: current_user.id), class: "btn btn-default"%> 
@@ -34,7 +34,7 @@
 
 	      <div class="mastfoot">
 	        <div class="inner">
-	          <large><a href="https://github.com/AusDTO/backchat"><i class="fa fa-github"></i></a></large>
+	          <large><a href="https://github.com/AusDTO/backchat"><span class="fa fa-github"></span></a></large>
 	        </div>
 	      </div>
 
