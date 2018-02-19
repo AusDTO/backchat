@@ -2,6 +2,8 @@
 machine:
   ruby:
     version: 2.2.3
+  node:
+    version: 8.2.0
 
 dependencies:
   pre:
@@ -11,9 +13,9 @@ dependencies:
 
 test:
   post:
-    - cf api https://api.system.staging.digital.gov.au
+    - cf api https://api.system.y.cld.gov.au
     - cf auth $CF_USER $CF_PASSWORD
-    - cf target -o dto -s dtomisc
+    - cf target -o dta -s data-gov-au
 
 deployment:
   production:

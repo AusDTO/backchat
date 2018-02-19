@@ -52,3 +52,4 @@ bower.json
 coverage
 public/assets
 node_modules
+.DS_Store
