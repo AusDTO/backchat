@@ -1,0 +1,109 @@
+version: 2
+jobs:
+  build:
+    parallelism: 2
+    docker:
+      - image: circleci/ruby:2.5-node
+        environment:
+          BUNDLE_JOBS: 3
+          BUNDLE_RETRY: 3
+          BUNDLE_PATH: vendor/bundle
+          PGHOST: 127.0.0.1
+          PGUSER: backchat
+          RAILS_ENV: test
+      - image: circleci/postgres:9.6-alpine-ram
+        environment:
+          POSTGRES_USER: backchat
+          POSTGRES_DB: backchat
+          POSTGRES_PASSWORD: ""
+    steps:
+      - checkout
+
+      # Which version of bundler?
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - backchat-bundle-v2-{{ checksum "Gemfile.lock" }}
+            - backchat-bundle-v2-
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+
+      # Store bundle cache
+      - save_cache:
+          key: backchat-bundle-v2-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - backchat-yarn-{{ checksum "yarn.lock" }}
+            - backchat-yarn-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: backchat-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+
+      - run:
+          name: Database setup
+          command: bin/rails db:schema:load --trace
+
+      # Run rspec in parallel
+      - type: shell
+        command: |
+          bundle exec rspec --profile 10 \
+                            --format RspecJunitFormatter \
+                            --out test_results/rspec.xml \
+                            --format progress \
+                            $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+      # Save test results for timing analysis
+      - store_test_results:
+        path: test_results
+
+  deploy:
+    docker:
+      - image: circleci/ruby:2.5-node
+
+    steps:
+      - checkout
+      - run: rm -rf node_modules       # delete node_modules to bust caching
+      - run: npm install               # duh
+      - run: npm run build             # required build step
+      - run: rm -rf node_modules       # delete node_modules folder again to not push it to cf
+      # install packages: cf-cli and tree
+      - run: sudo apt-get install apt-transport-https
+      - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
+      - run: echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+      - run: sudo apt-get update
+      - run: sudo apt-get install cf-cli
+      - run: cf version                # log what version we are running
+      - run: cf login -a api.system.y.cld.gov.au -o dta -s data-gov-au -u $CF_USER -p $CF_PASSWORD
+      - curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN
+          -F environment=production -F revision=`git log -n 1 --pretty=format:"%H"`
+          -F local_username=`whoami`
+      - run: cf push -f manifest.yml
+
+#workflows:
+#  version: 2
+#  test_and_deploy:
+#    jobs:
+#      - test
+#      - deploy:
+#          requires:
+#            - test
