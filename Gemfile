@@ -106,7 +106,7 @@ group :test do
   # Easily reset db between tests
   gem "database_cleaner", "~> 1.5.0"
   # code coverage reporting
-  gem 'simplecov', :require => false
+  gem 'simplecov'
 
   # Open web browser from test suite
   #gem "launchy", "~> 2.4.0"
