@@ -58,8 +58,8 @@ jobs:
       - run:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-      - run:
-          command: gem install simplecov
+      - run: gem install simplecov
+      - run: bin/rails db:migrate -- trace
       - run:
           name: Database setup
           command: bin/rails db:schema:load --trace
