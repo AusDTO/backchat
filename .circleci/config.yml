@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/ruby:2.5-node
         environment:
@@ -83,28 +83,43 @@ jobs:
 
     steps:
       - checkout
-      - run: rm -rf node_modules       # delete node_modules to bust caching
-      - run: npm install               # duh
-      - run: npm run build             # required build step
-      - run: rm -rf node_modules       # delete node_modules folder again to not push it to cf
+      # Only necessary if app uses webpacker or yarn in some other way
+      - restore_cache:
+          keys:
+            - backchat-yarn-{{ checksum "yarn.lock" }}
+            - backchat-yarn-
+
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+
+      # Store yarn / webpacker cache
+      - save_cache:
+          key: backchat-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       # install packages: cf-cli and tree
       - run: sudo apt-get install apt-transport-https
       - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
       - run: echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
       - run: sudo apt-get update
       - run: sudo apt-get install cf-cli
-      - run: cf version                # log what version we are running
+      - run: cf version
+      # log what version we are running
       - run: cf login -a api.system.y.cld.gov.au -o dta -s data-gov-au -u $CF_USER -p $CF_PASSWORD
       - curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN
           -F environment=production -F revision=`git log -n 1 --pretty=format:"%H"`
           -F local_username=`whoami`
       - run: cf push -f manifest.yml
 
-#workflows:
-#  version: 2
-#  test_and_deploy:
-#    jobs:
-#      - test
-#      - deploy:
-#          requires:
-#            - test
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - test
+      - deploy:
+          requires:
+            - test
+          filters:
+            branches:
+              only: master
