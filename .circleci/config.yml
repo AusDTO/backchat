@@ -59,6 +59,7 @@ jobs:
           name: Wait for DB
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: gem install simplecov
+      - run: sudo apt-get install postgresql-client
       - run: bin/rails db:migrate -- trace
       - run:
           name: Database setup
