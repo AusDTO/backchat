@@ -60,10 +60,9 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run: gem install simplecov
       - run: sudo apt-get install postgresql-client
-      - run: bin/rails db:migrate --trace
       - run:
           name: Database setup
-          command: bin/rails db:schema:load --trace
+          command: bin/rails db:migrate --trace
 
       # Run rspec in parallel
       - run:
