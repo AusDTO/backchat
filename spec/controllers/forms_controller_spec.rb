@@ -8,14 +8,14 @@ RSpec.describe FormsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit, id: @form.id
+      get :edit, params: { id: @form.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: @form.id
+      get :show, params: { id: @form.id }
       expect(response).to have_http_status(:success)
     end
   end

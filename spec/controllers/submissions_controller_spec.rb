@@ -8,14 +8,14 @@ RSpec.describe SubmissionsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: @submission.id
+      get :show, params: { id: @submission.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #submit" do
     it "returns http success" do
-      get :submit,  id: @submission.form.id, :format => :json
+      get :submit, params: {  id: @submission.form.id }, :format => :json
       expect(response).to have_http_status(:success)
     end
   end

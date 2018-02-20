@@ -8,7 +8,7 @@ RSpec.describe OutputJobsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: @output_job.id
+      get :show, params: { id: @output_job.id}
       expect(response).to have_http_status(:success)
     end
   end

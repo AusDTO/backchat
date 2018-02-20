@@ -8,14 +8,14 @@ RSpec.describe OutputsController, type: :controller do
 
   describe "GET #edit" do
     it "returns http success" do
-      get :edit, id: @output.id
+      get :edit,params: {  id: @output.id }
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET #show" do
     it "returns http success" do
-      get :show, id: @output.id
+      get :show, params: { id: @output.id}
       expect(response).to have_http_status(:success)
     end
   end
