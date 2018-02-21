@@ -103,13 +103,11 @@ jobs:
       - run: wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | sudo apt-key add -
       - run: echo "deb https://packages.cloudfoundry.org/debian stable main" | sudo tee /etc/apt/sources.list.d/cloudfoundry-cli.list
       - run: sudo apt-get update
-      - run: sudo apt-get install cf-cli
+      - run: sudo apt-get install cf-cli curl
       - run: cf version
       # log what version we are running
       - run: cf login -a api.system.y.cld.gov.au -o dta -s data-gov-au -u $CF_USER -p $CF_PASSWORD
-      - curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN
-          -F environment=production -F revision=`git log -n 1 --pretty=format:"%H"`
-          -F local_username=`whoami`
+      - run: curl https://api.rollbar.com/api/1/deploy/ -F access_token=$ROLLBAR_ACCESS_TOKEN -F environment=production -F revision=`git log -n 1 --pretty=format:"%H"` -F local_username=`whoami`
       - run: cf push -f manifest.yml
 
 workflows:

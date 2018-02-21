@@ -62,12 +62,13 @@ bin/rake db:seed
 ### Setting Up / Deploying to Cloud Foundry
 Thanks to http://docs.cloudfoundry.org/buildpacks/ruby/ruby-tips.html
 ```
-cf create-service DTO-staging-RDS-postgres 9.4-t2.micro-5G backchat-db
+cf create-service postgres shared backchat-db
 cf push
 # https://docs.pivotal.io/pivotalcf/devguide/services/migrate-db.html
 cf set-env backchat SECRET_KEY_BASE `rake secret`
-cf set-env backchat GOOGLE_CLIENT_SECRET 'abc'
-cf set-env backchat GOOGLE_CLIENT_ID '123'
+
+cf set-env backchat GOOGLE_CLIENT_ID '123.apps.googleusercontent.com'
+cf set-env backchat GOOGLE_CLIENT_SECRET 'abcxxx'
 
 cf push -c "bundle exec rake db:structure:ar_load QUE_MODE=off QUE_WORKERS=0" #first time setup
 cf push

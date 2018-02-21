@@ -45,6 +45,8 @@ gem 'google-api-client'
 gem "omniauth-google-oauth2"
 # Access control
 gem "cancancan"
+# ffi 19/20/21+ native compile rely on autotools/aclocal not yet in ruby buildpack
+gem 'ffi', '1.9.18'
 
 # =======================
 # APIs
