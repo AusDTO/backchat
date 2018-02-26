@@ -36,5 +36,7 @@ module Backchat
             request_specs: false
         g.fixture_replacement :factory_girl, dir: "spec/factories"
     end
+    config.eager_load_paths << Rails.root.join('models').join('types')
+    config.autoload_paths << "#{Rails.root}/models/types"
   end
 end

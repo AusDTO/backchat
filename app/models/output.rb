@@ -6,6 +6,7 @@ class Output < ActiveRecord::Base
   validates :name, :type, presence: true
   before_create :generate_uuid, unless: :id
 
+  attribute :configuration, :jsonb, default: {}
   def generate_uuid
     self.id = SecureRandom.uuid
   end

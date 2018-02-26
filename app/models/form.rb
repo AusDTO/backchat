@@ -6,6 +6,8 @@ class Form < ActiveRecord::Base
   validates :name, :website, presence: true
   before_create :generate_uuid, unless: :id
 
+  attribute :input_fields, :jsonb, default: {}
+
   def generate_uuid
     self.id = SecureRandom.uuid
   end

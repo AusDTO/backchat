@@ -5,7 +5,7 @@ class Submission < ActiveRecord::Base
   has_many :output_jobs
   #has_one_attached :file
   before_create :generate_uuid, unless: :id
-
+  attribute :content, :jsonb, default: {}
   def generate_uuid
     self.id = SecureRandom.uuid
   end

@@ -3,7 +3,7 @@ class OutputJob < ActiveRecord::Base
   belongs_to :submission
   has_one :form, through: :submission
   before_create :generate_uuid, unless: :id
-
+  attribute :result, :jsonb, default: {}
   def generate_uuid
     self.id = SecureRandom.uuid
   end

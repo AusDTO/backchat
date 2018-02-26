@@ -18,6 +18,9 @@ class FormsController < ApplicationController
 
     @form = Form.new(form_params)
     @form.owner_id = current_user.id
+    if @form.input_fields.is_a?(::String)
+      @form.input_fields = JSON.parse(@form.input_fields)
+    end
     if @form.save
       redirect_to @form, notice: 'Your form was successfully created.'
     else
@@ -33,6 +36,10 @@ class FormsController < ApplicationController
     # form
 
     @form.update_attributes!(form_params)
+    if @form.input_fields.is_a?(::String)
+      @form.input_fields = JSON.parse(@form.input_fields)
+      @form.save
+    end
     redirect_to @form, notice: 'Your form was successfully updated.'
   end
 

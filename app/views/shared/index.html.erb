@@ -24,9 +24,9 @@
 	          	<%= link_to "Sign Up", new_user_registration_path, class: "uikit-btn uikit-btn--dark" %> <%= link_to "Sign In", new_user_session_path, class: "uikit-btn uikit-btn--secondary uikit-btn--dark" %>
 						<% else %>
 							<h3>Welcome <%= current_user.email %></h3>
-							<p><%= link_to "Update Profile", edit_user_path(id: current_user.id), class: "btn btn-default"%> 
-								<%= link_to "Edit Account", edit_user_registration_path, class: "btn btn-default"%> 
-								<%= link_to 'Logout', destroy_user_session_path, :method => :delete , class: "btn btn-danger" %>
+							<p><%= link_to "Update Profile", edit_user_path(id: current_user.id), class: "uikit-btn btn-default"%>
+								<%= link_to "Edit Account", edit_user_registration_path, class: "uikit-btn btn-default"%>
+								<%= link_to 'Logout', destroy_user_session_path, :method => :delete , class: "uikit-btn btn-danger" %>
 							</p>
 						<% end %>
 	        </p>
