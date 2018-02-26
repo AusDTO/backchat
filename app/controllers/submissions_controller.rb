@@ -32,7 +32,7 @@ class SubmissionsController < ApplicationController
     #  params[:file] = nil
     #end
     #TODO filter by expected input fields
-    @submission.content = params.to_json
+    @submission.content = params.permit(@form.input_fields.map{|x| x["name"]} + ['referrer', 'satisfaction']).to_hash
     @submission.save()
     for output in @form.outputs
       @job = OutputJob.new(output_id: output.id, submission_id: @submission.id)
