@@ -1,5 +1,5 @@
 <h1><%= @form.name %></h1>
-<%= link_to "Edit", edit_form_path(@form.id), class: "uikit-btn btn-primary pull-right" %>
+<%= link_to "Edit", edit_form_path(@form.id), class: "au-btn btn-primary pull-right" %>
 
 Website: <%= @form.website %><br/>
 URL to redirect to after submission:  <%= @form.redirect_url %><br/>
@@ -25,7 +25,7 @@ Input Fields:
 </div>
 
 <% if @form.id %>
-  <p class="uikit-callout">
+  <p class="au-callout">
     You can integrate this form into an existing HTML website:<br/>
     <code>
       &lt;form action=&quot;<%= submit_url(@form.id) %>&quot; method=&quot;post&quot;&gt;<br/>

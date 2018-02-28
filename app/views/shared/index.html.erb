@@ -21,12 +21,12 @@
 	        <h1 class="cover-heading">Welcome</h1>
 	        <p class="lead">Backchat is a unified user feedback/contact system allowing simple HTML form POSTs to become quantifiable and actionable user feedback.<p class="lead">
 	          <% if !current_user %>
-	          	<%= link_to "Sign Up", new_user_registration_path, class: "uikit-btn uikit-btn--dark" %> <%= link_to "Sign In", new_user_session_path, class: "uikit-btn uikit-btn--secondary uikit-btn--dark" %>
+	          	<%= link_to "Sign Up", new_user_registration_path, class: "au-btn" %> <%= link_to "Sign In", new_user_session_path, class: "au-btn au-btn--secondary" %>
 						<% else %>
 							<h3>Welcome <%= current_user.email %></h3>
-							<p><%= link_to "Update Profile", edit_user_path(id: current_user.id), class: "uikit-btn btn-default"%>
-								<%= link_to "Edit Account", edit_user_registration_path, class: "uikit-btn btn-default"%>
-								<%= link_to 'Logout', destroy_user_session_path, :method => :delete , class: "uikit-btn btn-danger" %>
+							<p><%= link_to "Update Profile", edit_user_path(id: current_user.id), class: "au-btn btn-default"%>
+								<%= link_to "Edit Account", edit_user_registration_path, class: "au-btn btn-default"%>
+								<%= link_to 'Logout', destroy_user_session_path, :method => :delete , class: "au-btn btn-danger" %>
 							</p>
 						<% end %>
 	        </p>

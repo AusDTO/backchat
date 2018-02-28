@@ -12,21 +12,21 @@
 <html lang="en-AU" class="no-js"><!--<![endif]-->
 
 = render 'application/head',  title: (content_for?(:title) ? "#{yield(:title)} | Backchat" : 'Backchat' )
-%body.uikit-body.uikit-grid
+%body.au-body.au-grid
   %div.header-wrapper
-  %div.uikit-skip-link
-    %a.uikit-skip-link__link{href: "#content"}
+  %div.au-skip-link
+    %a.au-skip-link__link{href: "#content"}
       Skip to main content
-    %a.uikit-skip-link__link{href: "#nav"}
+    %a.au-skip-link__link{href: "#nav"}
       Skip to main navigation
-  %header.uikit-header.uikit-header--dark{role: "banner"}
+  %header.au-header.au-header--dark{role: "banner"}
     %div.container
       %div.row
         %div.col-sm-12
         - if content_for?(:header)
           = yield(:header)
         - else
-          %h1.uikit-header-heading
+          %h1.au-header-heading
             %a{href: "/"}
               =image_tag 'noun_36122_inverse.png', height: 32, width: 32
               backchat
@@ -35,8 +35,8 @@
     %div.container
       %div.row
         %div.col-sm-4.col-md-2#nav
-          %nav.uikit-inpage-nav-links
-            %ul.uikit-link-list
+          %nav.au-inpage-nav-links
+            %ul.au-link-list
               - if current_user
                 %li
                   =current_user.email
@@ -47,14 +47,14 @@
                 %li
                   =link_to 'Logout', destroy_user_session_path, :method => :delete
 
-            %ul.uikit-link-list.mainmenu--right.uikit-link-list--inline
+            %ul.au-link-list.mainmenu--right.au-link-list--inline
               %li
                 %a{href:"https://github.com/AusDTO/backchat/issues/new", role:"button"}
                   Give feedback
         %div#content.col-sm-8.col-md-9.col-lg-8.col-md-offset-1.col-lg-offset-2
           = render 'application/alerts'
           = yield
-  %footer.uikit-footer{role: "contentinfo"}
+  %footer.au-footer{role: "contentinfo"}
     .wrapper
       %section
 

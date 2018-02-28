@@ -1,6 +1,6 @@
 <h1><%= @output_job %></h1>
-<%= link_to 'Run synchronously', output_job_run_path(@output_job), class: "uikit-btn btn-primary pull-right" %>
-<%= link_to 'Queue to run', output_job_queue_path(@output_job), class: "uikit-btn btn-primary pull-right" %>
+<%= link_to 'Run synchronously', output_job_run_path(@output_job), class: "au-btn btn-primary pull-right" %>
+<%= link_to 'Queue to run', output_job_queue_path(@output_job), class: "au-btn btn-primary pull-right" %>
 <br/>
 Success: <%= @output_job.success or 'unknown' %><br/>
 Result: <code><%= JSON.pretty_generate(@output_job.result) or 'unknown' %></code>

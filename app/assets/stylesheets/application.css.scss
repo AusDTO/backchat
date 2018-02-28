@@ -13,7 +13,12 @@
  */
 @import "pancake.min";
 
-.uikit-header-heading, .uikit-header-heading a,a.uikit-btn {
+.au-header {
+  padding-top: 0em;
+  padding-bottom: 1.2em;
+}
+
+.au-header-heading, .au-header-heading a {
   color:white !important;
 }
 .is-visuallyhidden {/* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
