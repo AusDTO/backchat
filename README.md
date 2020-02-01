@@ -1,4 +1,5 @@
 # Backchat
+## DEPRECATED Try something like https://github.com/ohmyform/ohmyform instead
 [![Circle CI](https://circleci.com/gh/AusDTO/backchat.svg?style=svg&circle-token=91fb19660cb112017456896100284d9d305492d0)](https://circleci.com/gh/AusDTO/backchat)
 
 
